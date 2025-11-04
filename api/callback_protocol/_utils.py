@@ -1,8 +1,7 @@
 """Utility functions for the Kling AI Callback Protocol."""
 import hashlib
 import hmac
-import json
-from typing import Any, Callable, TypeVar, cast
+from typing import Any, TypeVar
 
 from fastapi import Request
 from pydantic import BaseModel

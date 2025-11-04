@@ -13,71 +13,13 @@ from typing import Optional
 
 from pydantic import HttpUrl
 
-from typing import TYPE_CHECKING
 
 from config import KlingConfig
 from models.text_to_video import TextToVideoTask
 from ._exceptions import TaskFailedError, handle_api_error
-from ._requests import KlingAPITextToVideoClient
+from ._requests import KlingAPITextToVideoClient, TextToVideoRequest
 from ._response import TaskResponse, TaskStatus
 
-
-if TYPE_CHECKING:
-    from client import KlingClient
-
-
-class TextToVideoAPI:
-    """
-    API route client for Kling AI Text-to-Video endpoints.
-
-    This class should be instantiated by the main KlingClient singleton and accessed via `client.text_to_video`.
-    """
-    def __init__(self, client: "KlingClient") -> None:
-        """
-        Args:
-            client: The singleton KlingClient instance
-        """
-        self._client = client
-        self._http = client._client  # httpx.AsyncClient
-        self.base_url = client.base_url
-
-    async def create_video(self, prompt: str, duration: int = 5, **kwargs) -> TaskResponse:
-        """Create a new video generation task.
-
-        Args:
-            prompt: Text prompt for video generation
-            duration: Duration of the video in seconds (default: 5)
-            **kwargs: Additional API parameters
-
-        Returns:
-            TaskResponse: The created video task response
-        """
-        data = {"prompt": prompt, "duration": duration, **kwargs}
-        try:
-            resp = await self._http.post(f"{self.base_url}/v1/videos/text2video", json=data)
-            resp.raise_for_status()
-            return TaskResponse.model_validate(resp.json())
-        except Exception as e:
-            raise handle_api_error(e)
-
-    async def get_status(self, task_id: str) -> TaskResponse:
-        """Get the status of a video generation task.
-
-        Args:
-            task_id: The ID of the video generation task
-
-        Returns:
-            TaskResponse: The task status response
-        """
-        try:
-            resp = await self._http.get(f"{self.base_url}/v1/videos/text2video/{task_id}")
-            resp.raise_for_status()
-            return TaskResponse.model_validate(resp.json())
-        except Exception as e:
-            raise handle_api_error(e)
-
-# Export for main client registration
-__all__ = ["TextToVideoAPI"]
 
 logger = logging.getLogger(__name__)
 
@@ -163,7 +105,7 @@ class TextToVideoAPI:
             Exception: For other API errors
         """
         try:
-            response = await self.client.create_task(
+            request = TextToVideoRequest(
                 prompt=prompt,
                 negative_prompt=negative_prompt,
                 model_name=model_name,
@@ -175,6 +117,7 @@ class TextToVideoAPI:
                 callback_url=callback_url,
                 external_task_id=external_task_id,
             )
+            response = await self.client.create_task(request)
             return TaskResponse(**response)
         except Exception as exc:
             logger.error("Failed to create text-to-video task: %s", exc)

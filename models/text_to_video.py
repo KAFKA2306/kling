@@ -97,10 +97,9 @@ class TextToVideoRequest(BaseModel):
         None, description="Custom ID for tracking the task"
     )
 
-    class Config:
-        """Pydantic config."""
-        use_enum_values = True
-        allow_population_by_field_name = True
+    model_config = {
+        "populate_by_name": True,
+    }
 
 
 class TextToVideoResponse(BaseModel):

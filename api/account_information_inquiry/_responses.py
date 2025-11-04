@@ -2,7 +2,6 @@
 Response models for the Kling AI Account Information Inquiry API.
 """
 from datetime import datetime
-from typing import Optional
 
 from pydantic import Field, field_serializer
 
@@ -42,5 +41,4 @@ class AccountCostsResponse(KlingAPIBaseModel):
     """Response model for account costs query."""
     code: int = Field(..., description="Error code")
     message: str = Field(..., description="Error message")
-    request_id: str = Field(..., description="Request ID for tracking and troubleshooting")
     data: AccountCostsResponseData = Field(..., description="Response data")

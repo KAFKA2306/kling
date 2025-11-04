@@ -1,12 +1,12 @@
 """Tests for account information inquiry client."""
 from datetime import datetime, timedelta
-from unittest.mock import AsyncMock, patch
+from unittest.mock import AsyncMock
 
 import pytest
-from pydantic import ValidationError
 
 from kling.api.account_information_inquiry import get_account_costs
-from kling.client import KlingAPIClient
+from kling.api.account_information_inquiry._responses import AccountCostsResponse, AccountCostsResponseData
+from kling.client import KlingClient
 
 
 @pytest.mark.asyncio
@@ -18,14 +18,14 @@ async def test_get_account_costs():
     end_time = now
     
     # Mock response data
-    mock_response = {
-        "code": 0,
-        "message": "success",
-        "request_id": "req-123",
-        "data": {
-            "code": 0,
-            "msg": "success",
-            "resource_pack_subscribe_infos": [
+    mock_response = AccountCostsResponse(
+        code=0,
+        message="success",
+        request_id="req-123",
+        data=AccountCostsResponseData(
+            code=0,
+            msg="success",
+            resource_pack_subscribe_infos=[
                 {
                     "resource_pack_name": "Video Generation - 10,000 entries",
                     "resource_pack_id": "509f3fd3d4ab4a3f9eec5db27aa44f27",
@@ -38,11 +38,11 @@ async def test_get_account_costs():
                     "status": "online"
                 }
             ]
-        }
-    }
+        )
+    )
     
     # Create a mock client
-    mock_client = AsyncMock(spec=KlingAPIClient)
+    mock_client = AsyncMock(spec=KlingClient)
     mock_client.get.return_value = mock_response
     
     # Call the function
@@ -75,10 +75,19 @@ async def test_get_account_costs_with_datetime():
     start_time = end_time - timedelta(days=1)
     
     # Mock response data
-    mock_response = {"code": 0, "message": "success", "request_id": "req-123", "data": {"code": 0, "msg": "success", "resource_pack_subscribe_infos": []}}
+    mock_response = AccountCostsResponse(
+        code=0, 
+        message="success", 
+        request_id="req-123", 
+        data=AccountCostsResponseData(
+            code=0, 
+            msg="success", 
+            resource_pack_subscribe_infos=[]
+        )
+    )
     
     # Create a mock client
-    mock_client = AsyncMock(spec=KlingAPIClient)
+    mock_client = AsyncMock(spec=KlingClient)
     mock_client.get.return_value = mock_response
     
     # Call the function with datetime objects

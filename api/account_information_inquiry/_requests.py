@@ -2,7 +2,7 @@
 Request models for the Kling AI Account Information Inquiry API.
 """
 from enum import Enum
-from typing import Literal, Optional
+from typing import Optional
 
 from pydantic import Field, field_validator
 

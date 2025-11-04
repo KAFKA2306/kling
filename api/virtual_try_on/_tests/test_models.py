@@ -15,9 +15,7 @@ from api.virtual_try_on._requests import (
 from api.virtual_try_on._responses import (
     TaskListResponse,
     TaskResponse,
-    VirtualTryOnTaskResponse,
     PaginatedResponse,
-    TaskListPaginatedResponse,
 )
 
 

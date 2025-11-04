@@ -3,24 +3,11 @@ Request handling for the Kling AI Image-to-Video API.
 """
 from __future__ import annotations
 
-import json
 import logging
 from typing import Any
 
-import httpx
-from pydantic import BaseModel, Field, ValidationError
+from pydantic import BaseModel, Field
 
-from kling.config import KlingConfig
-from ._exceptions import (
-    APIRequestError,
-    AuthenticationError,
-    NotFoundError,
-    RateLimitError,
-    ServerError,
-    TimeoutError,
-    ValidationError as KlingValidationError,
-    handle_api_error,
-)
 
 logger = logging.getLogger(__name__)
 
@@ -30,7 +17,7 @@ class APIRequest(BaseModel):
 
     def to_dict(self) -> dict[str, Any]:
         """Convert the request to a dictionary."""
-        return self.dict(exclude_none=True, by_alias=True)
+        return self.model_dump(exclude_none=True, by_alias=True)
 
 
 class ImageToVideoRequest(APIRequest):

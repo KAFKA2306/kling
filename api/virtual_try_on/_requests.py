@@ -52,7 +52,6 @@ class ImageSource(BaseModel):
 
     def model_dump(self, **kwargs) -> dict:
         """Override dump to return only the non-None value."""
-        data = super().model_dump(**kwargs)
         if self.url is not None:
             return {"url": str(self.url)}
         if self.base64 is not None:
@@ -80,8 +79,8 @@ class VirtualTryOnRequest(BaseModel):
         description="Callback URL for task completion notification"
     )
 
-    class Config:
-        json_schema_extra = {
+    model_config = {
+        "json_schema_extra": {
             "example": {
                 "model_name": "kolors-virtual-try-on-v1-5",
                 "human_image": {
@@ -93,6 +92,7 @@ class VirtualTryOnRequest(BaseModel):
                 "callback_url": "https://example.com/callback"
             }
         }
+    }
 
 
 class TaskListQuery(BaseModel):
@@ -117,10 +117,11 @@ class TaskListQuery(BaseModel):
         alias="pageSize"
     )
 
-    class Config:
-        json_schema_extra = {
+    model_config = {
+        "json_schema_extra": {
             "example": {
                 "pageNum": 1,
                 "pageSize": 30
             }
         }
+    }

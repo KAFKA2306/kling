@@ -3,7 +3,7 @@ Response models for the Virtual Try-On API.
 """
 from __future__ import annotations
 
-from typing import Generic, TypeAlias, TypeVar
+from typing import TypeVar
 
 from pydantic import BaseModel, Field
 

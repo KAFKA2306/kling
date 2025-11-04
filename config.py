@@ -1,8 +1,10 @@
 """
 Kling AI API configuration and constants.
 """
+import time
 from enum import Enum
 
+import jwt
 from pydantic import BaseModel, Field, model_validator
 
 
@@ -101,7 +103,8 @@ class CameraControl(BaseModel):
 
 class KlingConfig(BaseModel):
     """Main configuration for Kling AI API client."""
-    api_key: str = Field(..., description="API key for authentication")
+    api_key: str = Field(..., description="Access Key for JWT generation")
+    secret_key: str = Field(..., description="Secret Key for JWT signing")
     base_url: str = Field(
         "https://api.klingai.com",
         description="Base URL for the Kling AI API"
@@ -118,3 +121,12 @@ class KlingConfig(BaseModel):
         le=5,
         description="Maximum number of retries for failed requests"
     )
+
+    def generate_jwt_token(self) -> str:
+        headers = {"alg": "HS256", "typ": "JWT"}
+        payload = {
+            "iss": self.api_key,
+            "exp": int(time.time()) + 1800,
+            "nbf": int(time.time()) - 5
+        }
+        return jwt.encode(payload, self.secret_key, headers=headers)

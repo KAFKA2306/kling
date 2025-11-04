@@ -7,6 +7,5 @@ class KlingAPIBaseModel(BaseModel):
     
     model_config = ConfigDict(
         extra="allow",
-        use_enum_values=True,
         populate_by_name=True,
     )

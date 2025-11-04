@@ -1,6 +1,5 @@
 """Tests for callback protocol models."""
 import pytest
-from datetime import datetime
 from pydantic import ValidationError
 
 from .._requests import (

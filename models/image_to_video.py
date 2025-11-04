@@ -91,10 +91,9 @@ class ImageToVideoRequest(BaseModel):
         description="Custom ID for tracking the task"
     )
 
-    class Config:
-        """Pydantic config."""
-        use_enum_values = True
-        populate_by_name = True
+    model_config = {
+        "populate_by_name": True,
+    }
 
 
 class VideoInfo(BaseModel):

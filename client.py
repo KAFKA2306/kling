@@ -16,6 +16,7 @@ from tenacity import (
     wait_exponential,
 )
 
+from api.image_generation.image_generation import ImageGenerationAPI
 from api.image_to_video.image_to_video import ImageToVideoAPI
 from api.multi_image_to_video.multi_image_to_video import MultiImageToVideoAPI
 from api.text_to_video.text_to_video import TextToVideoAPI
@@ -73,31 +74,30 @@ class KlingClient:
             self.text_to_video = TextToVideoAPI(self)
             self.multi_image_to_video = MultiImageToVideoAPI(self)
             self.image_to_video = ImageToVideoAPI(self)
+            self.image_generation = ImageGenerationAPI(self)
             self.video_extension = VideoExtensionAPI(self._client)
         except ImportError as e:
             logger.warning(f"Failed to import one or more API modules: {e}")
             self.text_to_video = None  # Could not import TextToVideoAPI
             self.multi_image_to_video = None  # Could not import MultiImageToVideoAPI
             self.image_to_video = None  # Could not import ImageToVideoAPI
+            self.image_generation = None # Could not import ImageGenerationAPI
             self.video_extension = None  # Could not import VideoExtensionAPI
         # todo: Register additional subclients
         self._initialized = True
 
     def _create_http_client(self) -> httpx.AsyncClient:
-        """Create and configure an HTTP client.
-
-        Returns:
-            Configured httpx.AsyncClient instance
-        """
         return httpx.AsyncClient(
             base_url=self.base_url,
             timeout=self.timeout,
-            headers={
-                "Authorization": f"Bearer {self.config.api_key}",
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-            },
         )
+
+    def _get_headers(self) -> dict[str, str]:
+        return {
+            "Authorization": f"Bearer {self.config.generate_jwt_token()}",
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        }
 
     async def close(self) -> None:
         """Close the HTTP client."""
@@ -125,23 +125,9 @@ class KlingClient:
         endpoint: str,
         **kwargs,
     ) -> dict[str, Any]:
-        """Make an HTTP request to the Kling API with retries.
-
-        Args:
-            method: HTTP method (GET, POST, etc.)
-            endpoint: API endpoint path (e.g., "/v1/videos/text2video")
-            **kwargs: Additional arguments to pass to the request
-
-        Returns:
-            Parsed JSON response as a dictionary
-
-        Raises:
-            KlingAPIError: If the API returns an error response
-            httpx.HTTPStatusError: For HTTP errors
-            httpx.RequestError: For request errors
-        """
         url = f"{self.base_url}{endpoint}"
         logger.debug("Making %s request to %s", method, url)
+        kwargs.setdefault("headers", {}).update(self._get_headers())
 
         try:
             response = await self._client.request(method, url, **kwargs)
@@ -167,6 +153,28 @@ class KlingClient:
         except httpx.RequestError as e:
             logger.error("Request failed: %s", str(e))
             raise KlingSingletonAPIError(f"Request failed: {str(e)}") from e
+
+    async def get(
+        self,
+        endpoint: str,
+        params: dict[str, Any] | None = None,
+        response_model: type[T] | None = None,
+    ) -> T | dict[str, Any]:
+        response = await self._request("GET", endpoint, params=params)
+        if response_model:
+            return response_model.model_validate(response)
+        return response
+
+    async def post(
+        self,
+        endpoint: str,
+        json: dict[str, Any] | None = None,
+        response_model: type[T] | None = None,
+    ) -> T | dict[str, Any]:
+        response = await self._request("POST", endpoint, json=json)
+        if response_model:
+            return response_model.model_validate(response)
+        return response
 
     async def _get_paginated(
         self,
@@ -221,7 +229,7 @@ class KlingClient:
             )
 
         try:
-            return model.parse_obj(response.get("data", {}))
+            return model.model_validate(response.get("data", {}))
         except ValidationError as e:
             logger.error("Failed to validate response: %s", str(e))
             raise

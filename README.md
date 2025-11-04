@@ -1,119 +1,67 @@
 # Kling AI Python SDK
 
-Kling AI API と連携するための最新かつ型安全な Python SDK です。動画生成、画像処理、アカウント管理を含むすべての Kling AI サービスに、直感的でわかりやすいインターフェースを提供します。
+Kling AI API と連携するための型安全な Python SDK です。動画生成からアカウント管理まで、すべてのエンドポイントを 1 つのクライアントから呼び出せます。
 
-## ✨ 特長
+## ✨ Features
+- Text-to-Video / Image-to-Video / Multi-Image / Video Extension など主要生成機能をカバー
+- httpx ベースの非同期クライアントと Pydantic v2 による型安全なリクエスト・レスポンス
+- `KlingClient` シングルトンとサブクライアントのモジュール化で拡張が容易
 
-- **完全な API カバレッジ**: すべての Kling AI エンドポイントをサポート
-- **型安全性**: 実行時型チェックのために Pydantic v2 を採用
-- **Async/Await 対応**: HTTPX によるネイティブな非同期サポート
-
-## 🚀 インストール
-
+## 🚀 Installation
 ```bash
 uv sync install kling-ai-sdk
 ```
 
-## 📚 クイックスタート
-
-### 基本的な使用例
-
-```python
-from kling.client import KlingClient
-from kling.api.text_to_video import TextToVideoRequest
-
-async def main():
-    # API キーでクライアントを初期化
-    client = KlingClient(api_key="your-api-key")
-
-    # テキストから動画を生成するリクエストを作成
-    request = TextToVideoRequest(
-        prompt="A beautiful sunset over mountains",
-        duration=5.0,
-        resolution="1920x1080"
-    )
-
-    # リクエストを送信
-    response = await client.text_to_video(request)
-    print(f"Video generation started with ID: {response.task_id}")
-
-# 非同期関数を実行
-import asyncio
-asyncio.run(main())
-```
-
-## 📦 API モジュール
-
-### アカウント情報
-- リソースパッケージと利用状況の確認
-- アカウントの制限やクォータの確認
+## 🔑 Configuration
+SDK は `KlingConfig` を通じて Access Key と Secret Key を受け取り、JWT トークンを生成して認証します。
 
 ```python
-from kling.api.account_information_inquiry import get_account_costs
+from config import KlingConfig
 
-async def check_usage():
-    client = KlingClient(api_key="your-api-key")
-    response = await get_account_costs(
-        client=client,
-        start_time=start_timestamp,
-        end_time=end_timestamp
-    )
-    return response
-```
-
-### コールバックプロトコル
-- 長時間タスクの非同期コールバック処理
-- タスク更新と完了のハンドリング
-
-```python
-from kling.api.callback_protocol import CallbackRequest, register_callback_handler
-
-@register_callback_handler
-def handle_callback(callback: CallbackRequest):
-    print(f"Received callback for task {callback.task_id}")
-    print(f"Status: {callback.task_status}")
-    if callback.task_result:
-        print(f"Result URL: {callback.task_result.video_url}")
-```
-
-### メディア生成
-- テキストから動画を生成
-- 画像から動画へ変換
-- 複数画像からの動画生成
-- 動画エフェクトと後処理
-- バーチャル試着機能
-
-```python
-# テキストから動画
-from kling.api.text_to_video import TextToVideoRequest
-
-# 画像から動画
-from kling.api.image_to_video import ImageToVideoRequest
-
-# 動画エフェクト
-from kling.api.video_effects import apply_effect
-```
-
-## 🔧 設定
-
-環境変数またはコード上でクライアントを設定できます。
-
-```python
-from kling.client import KlingClient
-
-# カスタム設定で初期化
-client = KlingClient(
-    api_key="your-api-key",
-    base_url="https://api.kling.ai/v1",
-    timeout=30.0,
-    max_retries=3
+config = KlingConfig(
+    api_key="YOUR_ACCESS_KEY",
+    secret_key="YOUR_SECRET_KEY"
 )
 ```
 
-### 環境変数
-
-```bash
-export KLING_API_KEY="your-api-key"
-export KLING_BASE_URL="https://api.kling.ai/v1"
-export KLING_TIMEOUT=30
+開発環境では `.env` に設定：
 ```
+KLING_ACCESS_KEY="your_access_key"
+KLING_SECRET_KEY="your_secret_key"
+```
+
+**重要**: Kling AI API を使用するには、アカウントにクレジット残高が必要です。残高不足の場合は `InsufficientBalanceError` (code: 1102) が発生します。
+
+## 📦 Core APIs
+- `client.text_to_video` : テキストから動画タスクの作成とポーリング
+- `client.image_to_video` : 静止画を動画へ変換
+- `client.multi_image_to_video` : 複数画像からのストーリー生成
+- `client.video_extension` : 既存動画の延長やエフェクト適用
+- `api/account_information_inquiry` : 利用状況・コストの取得
+- `api/callback_protocol` : 非同期タスクのコールバック登録
+
+各 API フォルダには `_requests.py`（入力バリデーション）、`_response.py`（レスポンス構造）、`<feature>.py`（ビジネスロジック）が配置されています。
+
+## 🧪 Testing
+```bash
+uv run python -m pytest --maxfail=1 --disable-warnings
+uv run python -m pytest api/image_to_video/_tests -k create_task
+uv run python -m pytest --durations=10
+```
+
+`pytest-asyncio` と `httpx.AsyncClient` のモックを利用し、レート制限・タイムアウトなどの経路をカバーしてください。
+
+## 📁 Repository Map
+- `client.py` / `config.py` : SDK エントリーポイント
+- `api/` : ドメイン別 API 実装（例: `api/text_to_video`）
+- `models/` : 共通 Pydantic モデル群
+- `_docs/` : ユーザーガイドおよび法的情報
+- `usecases/` : 実運用を想定したオーケストレーション例
+- `tests/` : 共通テストユーティリティ、各 API のテストは `api/<feature>/_tests`
+
+## 📚 Additional Resources
+- API リファレンスとガイド: `_docs/`
+- 拡張シナリオのサンプルコード: `usecases/`
+- 既知の制限やリリースノート: `AGENTS.md`, `CLAUDE.md`
+
+バージョンアップ時は `_docs/` に移行手順を追記し、`config.py` のデフォルト値変更は PR 説明に根拠を明記してください。

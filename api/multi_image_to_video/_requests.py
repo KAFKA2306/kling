@@ -1,14 +1,13 @@
 from __future__ import annotations
-
-"""
-Request models for Kling AI Multi-Image to Video API.
-"""
 from enum import Enum
 from typing import Literal
 
 from pydantic import BaseModel, Field, HttpUrl, validator
 
-from pydantic import BaseModel, Field, HttpUrl, validator
+"""
+Request models for Kling AI Multi-Image to Video API.
+"""
+
 
 
 class MultiImageToVideoMode(str, Enum):

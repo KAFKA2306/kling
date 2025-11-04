@@ -2,17 +2,14 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
-from unittest.mock import AsyncMock, patch
+from unittest.mock import AsyncMock
 
-import httpx
 import pytest
 from pydantic import ValidationError
 
 from api.video_effects._exceptions import (
     VideoEffectsError,
     VideoEffectsRateLimitError,
-    VideoEffectsValidationError,
 )
 from api.video_effects._requests import (
     CreateVideoEffectRequest,
@@ -21,7 +18,6 @@ from api.video_effects._requests import (
     VideoQuality,
 )
 from api.video_effects._responses import (
-    TaskData,
     CreateTaskResponse,
     GetTaskResponse,
     ListTasksResponse,

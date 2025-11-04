@@ -3,7 +3,7 @@ Response models for the Kling AI Callback Protocol.
 """
 import time
 
-from pydantic import BaseModel, Field, HttpUrl
+from pydantic import BaseModel, Field
 
 
 class CallbackAckResponse(BaseModel):

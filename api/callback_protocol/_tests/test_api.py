@@ -1,15 +1,13 @@
 """Tests for the callback protocol API endpoints."""
-import json
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 from fastapi import status
 from fastapi.testclient import TestClient
 
 import api.callback_protocol.callback_protocol as callback_router
-from api.callback_protocol._exceptions import CallbackProcessingError, CallbackValidationError
-from api.callback_protocol._requests import CallbackRequest, TaskInfo, TaskResult, TaskStatus
-from api.callback_protocol._responses import CallbackAckResponse
+from api.callback_protocol._exceptions import CallbackProcessingError
+from api.callback_protocol._requests import CallbackRequest, TaskStatus
 
 # Test client setup
 client = TestClient(callback_router.router)
@@ -100,7 +98,8 @@ def test_register_callback_handler():
     callback_router.register_callback_handler(None)
     
     # Register a test handler
-    test_handler = lambda x: x
+    def test_handler(x):
+        return x
     callback_router.register_callback_handler(test_handler)
     
     # The handler should be registered

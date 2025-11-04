@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
-class KlingImageGenerator:
+class ImageGenerationAPI:
     """Client for Kling AI Image Generation API.
     
     This client provides methods to interact with the Kling AI Image Generation API,
@@ -82,8 +82,7 @@ class KlingImageGenerator:
             self._base_path,
             json=request.model_dump(exclude_none=True, by_alias=True),
         )
-        
-        return TaskResponse.model_validate(response)
+        return TaskResponse.model_validate(response['data'])
     
     async def get_task(self, task_id: str) -> TaskResponse:
         """Get the status of a specific task.
@@ -100,7 +99,7 @@ class KlingImageGenerator:
             KlingRateLimitError: If rate limited.
         """
         response = await self._client.get(f"{self._base_path}/{task_id}")
-        return TaskResponse.model_validate(response)
+        return TaskResponse.model_validate(response['data'])
     
     async def list_tasks(
         self,
@@ -135,7 +134,7 @@ class KlingImageGenerator:
             params=request.model_dump(exclude_none=True, by_alias=True),
         )
         
-        return TaskListResponse.model_validate(response)
+        return TaskListResponse.model_validate(response['data'])
     
     async def wait_for_task_completion(
         self,
@@ -175,4 +174,4 @@ class KlingImageGenerator:
 
 
 # For backward compatibility
-ImageGenerationClient = KlingImageGenerator
+ImageGenerationClient = ImageGenerationAPI

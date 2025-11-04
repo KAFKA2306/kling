@@ -1,9 +1,8 @@
 """Tests for the Kling AI Lip Sync API client."""
 from __future__ import annotations
 
-import json
 from datetime import datetime, timezone
-from unittest.mock import AsyncMock, patch
+from unittest.mock import AsyncMock
 
 import httpx
 import pytest
@@ -21,7 +20,6 @@ from api.lip_sync._requests import (
 from api.lip_sync._responses import (
     TaskData,
     TaskListResponse,
-    TaskResponse,
 )
 from api.lip_sync.lip_sync import LipSyncAPI
 

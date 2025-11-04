@@ -9,9 +9,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
-from typing import Any
 
-from pydantic import HttpUrl
 
 from typing import TYPE_CHECKING
 
@@ -109,7 +107,6 @@ class MultiImageToVideoAPI:
             MultiImageToVideoTaskError: If the task fails
             MultiImageToVideoAPIError: For other API errors
         """
-        import asyncio
         start_time = asyncio.get_event_loop().time()
         while True:
             try:

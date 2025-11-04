@@ -11,10 +11,11 @@ from typing import Any, Literal
 import httpx
 from pydantic import BaseModel, Field, HttpUrl, model_validator
 
-from kling.config import KlingConfig
+from config import KlingConfig
 from ._exceptions import (
     APIRequestError,
     AuthenticationError,
+    InsufficientBalanceError,
     NotFoundError,
     RateLimitError,
     ServerError,
@@ -99,12 +100,11 @@ class CameraControl(BaseModel):
         description="Camera movement configuration"
     )
 
-    @validator('config')
-    def validate_config_type(cls, v, values):
-        """Validate config based on camera control type."""
-        if values.get('type') == CameraControlType.SIMPLE and v is None:
+    @model_validator(mode='after')
+    def validate_config_type(self):
+        if self.type == CameraControlType.SIMPLE and self.config is None:
             raise ValueError("Config is required for simple camera control type")
-        return v
+        return self
 
 
 class TextToVideoRequest(BaseModel):
@@ -154,13 +154,6 @@ class TextToVideoRequest(BaseModel):
         description="Custom task ID for tracking"
     )
 
-    class Config:
-        """Pydantic config."""
-        use_enum_values = True
-        json_encoders = {
-            HttpUrl: str,
-        }
-
 
 def validate_task_id(task_id: str) -> None:
     """Validate task ID format."""
@@ -182,18 +175,19 @@ class KlingAPITextToVideoClient:
         self.config = config
         self.base_url = config.base_url.rstrip("/")
         self.timeout = httpx.Timeout(timeout=config.timeout)
-        self.headers = {
-            "Authorization": f"Bearer {config.api_key}",
+        self.client = self._create_client()
+
+    def _get_headers(self) -> dict[str, str]:
+        token = self.config.generate_jwt_token()
+        return {
+            "Authorization": f"Bearer {token}",
             "Content-Type": "application/json",
             "Accept": "application/json",
         }
-        self.client = self._create_client()
 
     def _create_client(self) -> httpx.AsyncClient:
-        """Create and configure the HTTP client."""
         return httpx.AsyncClient(
             base_url=self.base_url,
-            headers=self.headers,
             timeout=self.timeout,
             limits=httpx.Limits(
                 max_connections=100,
@@ -220,17 +214,24 @@ class KlingAPITextToVideoClient:
             response = await self.client.request(
                 method=method,
                 url=url,
+                headers=self._get_headers(),
                 json=data,
                 params=params,
             )
 
-            # Handle rate limiting
             if response.status_code == 429:
+                error_data = response.json()
+                if error_data.get("code") == 1102:
+                    raise InsufficientBalanceError(
+                        error_data.get("message", "Account balance not enough"),
+                        status_code=response.status_code,
+                        response=error_data,
+                    )
                 retry_after = int(response.headers.get("Retry-After", "60"))
                 raise RateLimitError(
                     "Rate limit exceeded",
                     status_code=response.status_code,
-                    response=response.json(),
+                    response=error_data,
                     retry_after=retry_after,
                 )
 
@@ -285,7 +286,7 @@ class KlingAPITextToVideoClient:
     async def create_task(self, request: TextToVideoRequest) -> dict[str, Any]:
         """Create a new text-to-video task."""
         try:
-            data = request.dict(exclude_none=True)
+            data = request.model_dump(exclude_none=True)
             return await self._request("POST", "/v1/videos/text2video", data=data)
         except Exception as exc:
             logger.error("Failed to create task: %s", exc)

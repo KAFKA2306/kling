@@ -59,6 +59,18 @@ class RateLimitError(KlingAPIError):
         super().__init__(message, status_code, response)
 
 
+class InsufficientBalanceError(KlingAPIError):
+    """Raised when account balance is insufficient."""
+
+    def __init__(
+        self,
+        message: str = "Account balance not enough",
+        status_code: int | None = 429,
+        response: Any | None = None,
+    ) -> None:
+        super().__init__(message, status_code, response)
+
+
 class ValidationError(KlingAPIError):
     """Raised when input validation fails."""
 

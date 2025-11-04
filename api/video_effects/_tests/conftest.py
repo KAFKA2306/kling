@@ -1,7 +1,6 @@
 """Test configuration and fixtures for the Kling AI Video Effects API client."""
 from __future__ import annotations
 
-import json
 from datetime import datetime, timezone
 from unittest.mock import AsyncMock
 
@@ -9,17 +8,8 @@ import httpx
 import pytest
 
 from api.video_effects._requests import (
-    CreateVideoEffectRequest,
     EffectType,
     TaskStatus,
-    VideoQuality,
-)
-from api.video_effects._responses import (
-    CancelTaskResponse,
-    CreateTaskResponse,
-    GetTaskResponse,
-    ListTasksResponse,
-    TaskData,
 )
 
 # Test data

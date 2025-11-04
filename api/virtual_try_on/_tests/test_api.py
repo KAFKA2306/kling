@@ -5,9 +5,8 @@ from __future__ import annotations
 
 import json
 from datetime import datetime
-from unittest.mock import AsyncMock, MagicMock
+from unittest.mock import AsyncMock
 
-import pytest
 from httpx import Response
 
 from api.virtual_try_on.virtual_try_on import VirtualTryOnAPI
@@ -20,7 +19,6 @@ from api.virtual_try_on._requests import (
 from api.virtual_try_on._responses import (
     TaskResponse,
     TaskListResponse,
-    VirtualTryOnTaskResponse,
 )
 
 

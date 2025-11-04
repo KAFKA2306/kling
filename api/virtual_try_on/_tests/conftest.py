@@ -3,10 +3,9 @@ Test configuration and fixtures for Virtual Try-On API tests.
 """
 from __future__ import annotations
 
-from unittest.mock import AsyncMock, MagicMock
+from unittest.mock import AsyncMock
 
 import pytest
-from httpx import AsyncClient
 
 from api.virtual_try_on.virtual_try_on import VirtualTryOnAPI
 

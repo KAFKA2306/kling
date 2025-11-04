@@ -92,9 +92,9 @@ class VideoExtensionRequest(BaseModel):
         None, description="Custom ID for tracking the task"
     )
 
-    class Config:
-        use_enum_values = True
-        allow_population_by_field_name = True
+    model_config = {
+        "populate_by_name": True,
+    }
 
 
 class VideoExtensionResponse(BaseModel):
