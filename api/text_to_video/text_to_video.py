@@ -13,12 +13,17 @@ from typing import Optional
 
 from pydantic import HttpUrl
 
-from ...client import KlingClient
-from ...config import KlingConfig
-from ...models.text_to_video import TextToVideoTask
+from typing import TYPE_CHECKING
+
+from config import KlingConfig
+from models.text_to_video import TextToVideoTask
 from ._exceptions import TaskFailedError, handle_api_error
 from ._requests import KlingAPITextToVideoClient
 from ._response import TaskResponse, TaskStatus
+
+
+if TYPE_CHECKING:
+    from client import KlingClient
 
 
 class TextToVideoAPI:
@@ -27,7 +32,7 @@ class TextToVideoAPI:
 
     This class should be instantiated by the main KlingClient singleton and accessed via `client.text_to_video`.
     """
-    def __init__(self, client: KlingClient) -> None:
+    def __init__(self, client: "KlingClient") -> None:
         """
         Args:
             client: The singleton KlingClient instance

@@ -1,117 +1,122 @@
-The Advantages of Kling AI
-Powerful Image Generation Capabilities
+# Kling AI の優位性
 
-“The Most Proficient Chinese Image Generation Model” : Trained on a large language model (LLM) and billions of Chinese corpora, with comprehensive metrics surpassing open-source models like SDXL/SD3 and closed-source models like Midjourney, achieving state-of-the-art (SOTA) performance in Chinese scenarios.
-Ability support
-Text to Image	Diverse Styles | Exquisite Image Quality | Full of Creativity
-Supports user input text freelyto control the content of image generation.	Prompt：A white-haired man floating on the water, minimalist style, large areas of blue, animated art style, bright color palette, trendy, deep white and amber tones, loose brushstrokes, deep white and light sky blue, mysterious, detailed painting, Korean aesthetic.	
-示例图片
-Image to Image	Consistent with the Prompts | Reference Image Consistency
-Supports users uploading reference images and specifying the model’s reference strength when generating images.	
-示例图片
-	
-示例图片
+## 強力な画像生成能力
 
+「最も熟練した中国語の画像生成モデル」：Kling は大規模言語モデル（LLM）と数十億件の中国語コーパスで訓練されており、SDXL や SD3 のようなオープンソースモデル、Midjourney のようなクローズドソースモデルを総合指標で上回り、中国語シナリオにおいて最先端（SOTA）の性能を実現しています。
 
-Advantages of Image Generation
-Highlight 1	Powerful Semantic Understanding Capability
-Continuous innovation in text representation and refined alignment of image-text data	Prompt：A stylish Chinese woman on the streets of Shanghai, sunlight shining on her. She is wearing a black leather jacket, a red long skirt, carrying a black backpack, wearing sunglasses, with red lipstick on, walking confidently and casually	
-示例图片
-Highlight 2	Cinematographic Image Texture Quality
-Multi-stage progressive training, reinforcement learning and refined alignment of human aesthetics	Prompt：Cinematic image quality, the azure lake water reflects the pure white feathers of two swans, with continuous and clear snow-capped mountains in the distance, forming reflections on the water surface, creating a symmetrical image. The scene is captured with a camera-like quality, using a large aperture, high contrast, and high saturation	
-示例图片
-Highlight 3	Control Generation Under Multiple Condition
-Conditional combination generation, especially the preservation of portraits and the ability to incorporate text into images	Prompt：Oil painting style, the Bund in Shanghai, clear blue sky, Monet’s painting style, dreamy and hazy, Morandi color palette, Impressionist, light and shadow, fresh colors, rich in details, a masterpiece	
-示例图片
-Outstanding Video Generation Capabilities
+### 画像生成の対応機能
 
-“The World’s Leading Video Generation Model” : Kling is the first video generation large-scale model that is open to users, currently leading in both domestic and international markets.
-Ability support
-Text to Video	Semantic Instruction Understanding｜Motion Logical Consistency
-Generates dynamic video content based on text	Prompt：A panda is playing guitar by the lake	
-Image to Video	Consistency | Large-Scale Motion
-Generates dynamic video content based on images plus text control	
-示例图片
-	
-Multi-Image to Video	Multi-subject integration | Multi-subject interaction
-Generate dynamic video content based on multiple images	
-示例图片
-示例图片
-示例图片
+- **Text to Image（テキストから画像）**  
+  多彩なスタイル、精緻な画質、高い創造性を両立します。ユーザーは自由にテキストを入力して、生成内容を細部までコントロールできます。  
+  プロンプト例：水面に浮かぶ白髪の男性。ミニマルな構図で、広い青の領域、アニメ調、鮮やかな色彩、トレンド感、深い白とアンバーのトーン、ゆるい筆致、深い白と薄いスカイブルー、神秘的でディテール豊かな韓国美学。  
+  サンプル画像
+- **Image to Image（画像から画像）**  
+  プロンプトの意図と参照画像の一貫性を両立します。生成時には参照画像をアップロードし、参照強度を指定できます。  
+  サンプル画像  
+  サンプル画像  
+  サンプル画像
 
-"A girl riding a unicorn in the forest, cinematic realism style"	
-Video Editor	Start and End Frames｜Camera Movement｜…
-A tool for the entire process of film and video creation	
-示例图片
-示例图片
-	
+### 画像生成のハイライト
 
+- **ハイライト 1：強力なセマンティック理解能力**  
+  テキスト表現の継続的な革新と、画像・テキストデータの精緻なアライメントにより、ユーザーの指示を忠実に解釈します。  
+  プロンプト例：太陽の光を浴びながら上海の街を歩くスタイリッシュな中国人女性。黒いレザージャケット、赤いロングスカート、黒いバックパック、サングラス、赤いリップ。自信に満ちたリラックスした歩み。  
+  サンプル画像
+- **ハイライト 2：映画のような質感**  
+  マルチステージの漸進的トレーニング、強化学習、人間の審美眼に即したアライメントにより、映画作品のような質感を再現します。  
+  プロンプト例：シネマティックな画質。青い湖面に純白の白鳥が 2 羽映り込み、遠方の雪山が連なり水面に対称の反射を作る。大口径・高コントラスト・高彩度で撮影したような雰囲気。  
+  サンプル画像
+- **ハイライト 3：多条件下での生成制御**  
+  条件の組み合わせ生成により、人物の保持やテキスト要素の埋め込みなどの高度なニーズにも対応します。  
+  プロンプト例：油絵スタイルの上海・外灘。澄み渡る青空、モネ風の筆致、夢幻的で霞がかった質感、モランディ調の色彩、印象派の光と影、フレッシュな色合いでディテール豊かな傑作。  
+  サンプル画像
 
-Advantages of Video Generation
-Highlight 1	Generation of Significant and Realistic Motion
-Kling employs a 3D spatio-temporal joint attention mechanism, which enables it to better model complex spatio-temporal movements in videos. As a result, Kling can not only generate significant motion but also adhere more closely to the natural laws of motion.	
-	
-Highlight 2	Minute-Long Video Generation
-Benefiting from efficient training infrastructure, extreme inference optimization, and scalable foundational architecture, Kling can generate videos up to 3 minutes long.	
-	
-Highlight 3	More Accurate Simulation of Physical World Characteristics
-Kling’s large model utilizes a 3D spatiotemporal joint attention mechanism, which enhances its ability to model the intricate spatiotemporal dynamics present in videos.Therefore, Keling’s large model is capable of generating movements with a significant range and is more aligned with the laws of motion.	
-	
-Highlight 4	Strong Conceptual Combination Ability and Imagination
-Leveraging the model’s deep understanding of text-video semantics and the robust conceptual combination capabilities learned from the Diffusion Transformer architecture, Keling’s large model can transform users’ rich imagination into concrete imagery.	
-	
-Vivid and Natural Lip-Sync Capability
+## 卓越した動画生成能力
 
-The lip-sync feature can perfectly synchronize the lip movements of characters in videos generated by Kling AI with locally recorded or online-generated dubbing/singing files, achieving the effect of real people speaking or singing, and making the video appear lifelike!
-Advantages of Lip-Sync
-	
+「世界をリードする動画生成モデル」：Kling はユーザーに公開されている初の大規模動画生成モデルであり、国内外の市場でトップクラスの評価を得ています。
 
-    Naturally and Highly Matched Lip Movements: The lip movements of characters in the generated video not only synchronize precisely with the audio but also create unique movement trajectories based on individual facial features and physiological structures, significantly enhancing the video’s naturalness and realism.
-    Clear Facial Muscle Texture: The changes in lip movements accurately drive the facial muscles, adjusting in real-time and meticulously presenting the stretching and contraction of muscles during lip movement, resulting in a highly coordinated visual effect that further enhances the overall realism and immersive quality of the video.
-    Vivid and Lifelike Imagery: The areas outside the face in the generated video remain consistent with the original video, ensuring the integrity and continuity of the original footage, avoiding interference with non-target areas during the generation process, and restoring the original appearance of the video to the greatest extent possible.
+### 動画生成の対応機能
 
+- **Text to Video（テキストから動画）**  
+  意味理解と動きの論理性を両立したダイナミックな動画を生成します。  
+  プロンプト例：湖畔でギターを弾くパンダ。  
+- **Image to Video（画像から動画）**  
+  画像とテキストの制御を組み合わせ、大きな動きでも一貫性を維持します。  
+  サンプル画像
+- **Multi-Image to Video（複数画像から動画）**  
+  複数の被写体や相互作用を自然に統合した動画を生成します。  
+  サンプル画像  
+  サンプル画像  
+  サンプル画像  
+  サンプル動画コンセプト：森でユニコーンに乗る少女（シネマティックで写実的なスタイル）
+- **Video Editor**  
+  冒頭・末尾フレーム、カメラワークなど映像制作の全工程を支援します。  
+  サンプル画像  
+  サンプル画像
 
-Use Scenario
-Singing	Entertainment and Fun	Film and Television Fan Creations
-	
-	
-Engaging and entertaining video special effects capabilities
+### 動画生成のハイライト
 
-Kling AI has launched its Single Image Effects and Dual-character Effects capabilities. The Single Image Effects allows users to upload an image containing human subjects or objects to instantly generate two types of effect videos: “squish” and “expansion” . The Dual-character Effects enables users to upload two portrait photos to automatically create three types of affectionate interaction videos: “Hug”, “Kiss”, and “Heart_gesture”, delivering realistic, natural, and entertaining visual experiences.
-Advantages of Video Effects
+- **ハイライト 1：大きな動きと写実性の両立**  
+  3D 時空間のジョイントアテンション機構により、複雑な動きを高精度にモデリングし、自然法則に沿ったリアルな動画を生成します。
+- **ハイライト 2：最長 3 分までの動画生成**  
+  高効率な学習インフラ、推論最適化、スケーラブルな基盤アーキテクチャにより、最大 3 分の長尺動画を生成できます。
+- **ハイライト 3：物理世界の精確なシミュレーション**  
+  大規模モデルが時空間の複雑なダイナミクスを把握し、広い移動量でも物理法則に忠実な動きを再現します。
+- **ハイライト 4：強力な概念融合と想像力**  
+  テキストと動画の意味を深く理解し、Diffusion Transformer で培った概念結合力により、ユーザーの豊かな想像力を具体的な映像に変換します。
 
-    Naturally and Highly Matched Lip Movements: The lip movements of characters in the generated video not only synchronize precisely with the audio but also create unique movement trajectories based on individual facial features and physiological structures, significantly enhancing the video’s naturalness and realism.
-    Clear Facial Muscle Texture: The changes in lip movements accurately drive the facial muscles, adjusting in real-time and meticulously presenting the stretching and contraction of muscles during lip movement, resulting in a highly coordinated visual effect that further enhances the overall realism and immersive quality of the video.
-    Vivid and Lifelike Imagery: The areas outside the face in the generated video remain consistent with the original video, ensuring the integrity and continuity of the original footage, avoiding interference with non-target areas during the generation process, and restoring the original appearance of the video to the greatest extent possible.
+## 自然で臨場感のあるリップシンク
 
+リップシンク機能は、Kling AI が生成した動画に対して、ローカルで録音した音声やオンラインで生成したボイス／歌唱データと口元の動きを完全に同期させます。実在の人物が話したり歌ったりしているかのような自然な映像を実現します。
 
-Use Case
-FuzzyFuzzy (To be online)	MochiMochi	BoomBoom
-	
-	
-Hug	Kiss	Heart_gestures
-	
-	
-Advanced Virtual Try-On Capability
+### リップシンクのメリット
 
-Virtual Try-on is powered by our image-generation model, integrating technologies that preserve clothing SKUs, adjust human poses, and restore backgrounds. It enables users to generate try-on effects for any clothing, body shape, and pose. Even with complex backgrounds, high-quality try-on results can be achieved.
-Advantages of Virtual Try-on
-	
+- 自然で高精度な口の動き：音声と完全に同期し、顔の特徴や生体構造に合わせた独自の動き軌道を生成します。
+- 顔の筋肉のディテールを忠実に再現：口元の動きに連動した筋肉の伸縮をリアルタイムに描写し、没入感を高めます。
+- 生き生きとした映像表現：顔以外の領域は元動画を保持し、ターゲット以外への干渉を避けながら元の映像美を最大限に残します。
 
-    Preserving Clothing Styles& Details: With Kolors Virtual Try-on, users can “try on” a wide range of clothing, from tops to dresses. The model can retain details like patterns, texts, and designs, ensuring the virtual try-on experience matches the real one.
-    Natural Try-on Effects: Kolors Virtual Try-on can create realistic and natural fitting effects. Users can “dress” 2D clothing in any setting, whether indoors or outdoors, with results that adhere to the laws of physics, making it look seamless and lifelike.
-    Full Process Generation: Powered by Kolors’ image-generation large model, the system can generate models of different ages, genders, and ethnicities, while adapting to various backgrounds, catering to global e-commerce needs. Additionally, leveraging Kling’s powerful image-to-video model, it can transform model photos into short videos, enabling full-process generation from image to video.
+### 主な利用シーン
 
+- 歌唱コンテンツ
+- エンタメ・おもしろ動画制作
+- 映画・ドラマファンによる創作
 
-Try-on Showcases
-示例图片
-	
-示例图片
-	
-示例图片
+## 魅力的な動画エフェクト
 
+Kling AI は、単一画像エフェクトと 2 名キャラクターエフェクトを提供します。単一画像エフェクトでは、人や物体を含む画像をアップロードするだけで「squish」「expansion」など 2 種類の動画エフェクトを即座に生成できます。2 名キャラクターエフェクトでは 2 枚のポートレートをアップロードするだけで、「Hug」「Kiss」「Heart_gesture」といった親密なインタラクション動画を自動生成し、リアルで自然な体験を提供します。
 
-Scenario
-For Customers	E-commerce Content Generation	Costume Change Effects
-	
-	
+### 動画エフェクトのメリット
+
+- 音声や動作に高精度で追従する表情演技により、キャラクターの動きを自然に描写します。
+- 表情筋のディテールを緻密にレンダリングし、動きの連続性と調和を確保します。
+- 顔以外の領域を原動画と一致させ、不要な領域の破綻を防ぎつつ没入感を高めます。
+
+### 主なユースケース
+
+- FuzzyFuzzy（公開予定）
+- MochiMochi
+- BoomBoom
+
+サポートするインタラクション：ハグ／キス／ハートジェスチャー
+
+## 先進的なバーチャル試着機能
+
+バーチャル試着は独自の画像生成モデルを基盤とし、衣料品 SKU の保持、ポーズ調整、背景復元などの技術を統合しています。任意の衣装・体型・ポーズで試着結果を生成でき、複雑な背景でも高品質なアウトプットを実現します。
+
+### バーチャル試着のメリット
+
+- 衣装のスタイルとディテールを保持：Kolors Virtual Try-on により、トップスからドレスまで幅広い衣装を忠実に再現し、柄・文字・デザインを細部まで保ちます。
+- 自然でリアルな装着効果：屋内外を問わず 2D の衣装を物理法則に沿って自然にフィットさせ、シームレスで生き生きとした仕上がりを提供します。
+- 一連の生成プロセスに対応：Kolors の画像生成モデルを活用し、年齢・性別・人種の異なるモデルや多様な背景に適応。さらに Kling の強力な画像から動画へのモデルで、写真から短編動画まで一貫した生成を可能にします。
+
+### 試着サンプル
+
+サンプル画像  
+サンプル画像  
+サンプル画像
+
+### 利用シナリオ
+
+- 顧客向け試着体験
+- EC コンテンツ制作
+- 衣装チェンジ演出

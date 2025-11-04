@@ -6,7 +6,7 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, HttpUrl, field_validator
 
-from app.core.third_party_integrations.kling.config import (
+from config import (
     CameraControl,
     KlingModelName,
     VideoMode,
@@ -156,4 +156,3 @@ class ImageToVideoListResponse(BaseModel):
     message: str = Field(..., description="Error message")
     request_id: str = Field(..., description="Request ID for debugging")
     data: list[ImageToVideoTask] = Field(..., description="List of tasks")
-

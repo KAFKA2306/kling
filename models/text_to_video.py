@@ -6,7 +6,7 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, HttpUrl, field_validator
 
-from app.core.third_party_integrations.kling.config import (
+from config import (
     AspectRatio,
     CameraControl,
     KlingModelName,
@@ -45,7 +45,8 @@ class TextToVideoTask(BaseModel):
     updated_at: datetime = Field(..., alias="updated_at")
     task_result: TaskResult | None = Field(None, alias="task_result")
 
-    @field_validator("created_at", "updated_at", pre=True)
+    @field_validator("created_at", "updated_at", mode='before')
+    @classmethod
     def parse_timestamps(cls, v):
         """Parse Unix timestamp in milliseconds to datetime."""
         if isinstance(v, int | float):

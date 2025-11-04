@@ -9,18 +9,18 @@ import httpx
 import pytest
 from pydantic import ValidationError
 
-from app.core.third_party_integrations.kling.api.video_effects._exceptions import (
+from api.video_effects._exceptions import (
     VideoEffectsError,
     VideoEffectsRateLimitError,
     VideoEffectsValidationError,
 )
-from app.core.third_party_integrations.kling.api.video_effects._requests import (
+from api.video_effects._requests import (
     CreateVideoEffectRequest,
     TaskStatus,
     EffectType,
     VideoQuality,
 )
-from app.core.third_party_integrations.kling.api.video_effects._responses import (
+from api.video_effects._responses import (
     TaskData,
     CreateTaskResponse,
     GetTaskResponse,

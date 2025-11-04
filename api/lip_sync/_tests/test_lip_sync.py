@@ -9,21 +9,21 @@ import httpx
 import pytest
 from pydantic import ValidationError
 
-from app.core.third_party_integrations.kling.api.lip_sync._exceptions import (
+from api.lip_sync._exceptions import (
     LipSyncError,
     LipSyncRateLimitError,
     LipSyncValidationError,
 )
-from app.core.third_party_integrations.kling.api.lip_sync._requests import (
+from api.lip_sync._requests import (
     CreateTaskRequest,
     TaskStatus,
 )
-from app.core.third_party_integrations.kling.api.lip_sync._responses import (
+from api.lip_sync._responses import (
     TaskData,
     TaskListResponse,
     TaskResponse,
 )
-from app.core.third_party_integrations.kling.api.lip_sync.lip_sync import LipSyncAPI
+from api.lip_sync.lip_sync import LipSyncAPI
 
 # Test data
 TEST_TASK_ID = "test_task_123"

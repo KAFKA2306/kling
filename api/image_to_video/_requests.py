@@ -10,7 +10,7 @@ from typing import Any
 import httpx
 from pydantic import BaseModel, Field, ValidationError
 
-from ...config import KlingConfig
+from kling.config import KlingConfig
 from ._exceptions import (
     APIRequestError,
     AuthenticationError,

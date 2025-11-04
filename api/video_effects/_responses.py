@@ -6,7 +6,7 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, HttpUrl
 
-from app.core.third_party_integrations.kling.api.video_effects._requests import (
+from ._requests import (
     EffectType,
     TaskStatus,
     VideoQuality,

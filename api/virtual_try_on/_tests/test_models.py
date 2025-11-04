@@ -6,13 +6,13 @@ from __future__ import annotations
 import pytest
 from pydantic import ValidationError
 
-from app.core.third_party_integrations.kling.api.virtual_try_on._requests import (
+from api.virtual_try_on._requests import (
     ImageSource,
-    ModelName,
+   ModelName,
     TaskListQuery,
     VirtualTryOnRequest,
 )
-from app.core.third_party_integrations.kling.api.virtual_try_on._responses import (
+from api.virtual_try_on._responses import (
     TaskListResponse,
     TaskResponse,
     VirtualTryOnTaskResponse,

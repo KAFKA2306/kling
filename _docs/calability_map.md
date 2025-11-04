@@ -1,80 +1,91 @@
-Video Generation
-Model	kling-v1	kling-v1-5	kling-v1-6 Image2Video	kling-v1-6 Text2Video	kling-v2 Master
-Mode	STD	PRO	STD	PRO	STD	PRO	STD	PRO	-
-Resolution	720p	720p	720p	1080p	720p	1080p	720p	1080p	720p
-Frame Rate	30fps	30fps	30fps	30fps	30fps	30fps	24fps	24fps	24fps
+# 能力マップ
 
+## 動画生成
 
-kling-v1	std 5s	std 10s	pro 5s	pro 10s
-text to video	video generation	✅	✅	✅	✅
-camera control	✅	-	-	-
-image to video	video generation	✅	✅	✅	✅
-start/end frame	✅	-	✅	-
-motion brush	✅	-	✅	-
-others	-	-	-	-
-multi-image2video	-	-	-	-
-video extension
-(Not supported negative_prompt and cfg_scale)	✅	✅	✅	✅
-lip sync	✅	✅	✅	✅
-video effects
-Dual-character: Hug, Kiss, heart_gesture	✅	✅	✅	✅
+### 解像度とフレームレート
 
+- **kling-v1**：STD 720p / 30fps、PRO 720p / 30fps
+- **kling-v1.5**：STD 720p / 30fps、PRO 1080p / 30fps
+- **kling-v1.6（Image to Video）**：STD 720p / 30fps、PRO 1080p / 30fps
+- **kling-v1.6（Text to Video）**：STD 720p / 30fps、PRO 1080p / 30fps
+- **kling-v2 Master**：単一モード 720p / 24fps
 
-kling-v1-5	std 5s	std 10s	pro 5s	pro 10s
-text to video	video generation	-	-	-	-
-others	-	-	-	-
-image to video	video generation	✅	✅	✅	✅
-start/end frame	-	-	✅	✅
-end frame	-	-	✅	✅
-motion brush	-	-	✅	-
-camera control
-（simple only）	-	-	✅	-
-others	-	-	-	-
-multi-image2video	-	-	-	-
-video extension	✅	✅	✅	✅
-lip sync	✅	✅	✅	✅
-video effects
-Dual-character: Hug, Kiss, heart_gesture	✅	✅	✅	✅
+### kling-v1 の機能対応
 
+| 機能 | STD 5 秒 | STD 10 秒 | PRO 5 秒 | PRO 10 秒 |
+| --- | --- | --- | --- | --- |
+| テキスト→動画（動画生成） | ✅ | ✅ | ✅ | ✅ |
+| カメラ制御 | ✅ | - | - | - |
+| 画像→動画（動画生成） | ✅ | ✅ | ✅ | ✅ |
+| 開始／終了フレーム | ✅ | - | ✅ | - |
+| モーションブラシ | ✅ | - | ✅ | - |
+| その他機能 | - | - | - | - |
+| マルチ画像→動画 | - | - | - | - |
+| 動画延長（negative_prompt と cfg_scale は非対応） | ✅ | ✅ | ✅ | ✅ |
+| リップシンク | ✅ | ✅ | ✅ | ✅ |
+| 動画エフェクト（2 名キャラクター：ハグ／キス／ハートジェスチャー） | ✅ | ✅ | ✅ | ✅ |
 
-kling-v1-6	std 5s	std 10s	pro 5s	pro 10s
-text to video	video generation	✅	✅	-	-
-others	-	-	-	-
-image to video	video generation	✅	✅	✅	✅
-start/end frame	-	-	✅	✅
-end frame	-	-	✅	✅
-others	-	-	-	-
-multi-image2video	✅	✅	✅	✅
-video extension	✅	✅	✅	✅
-lip sync	✅	✅	✅	✅
-video effects
-Dual-character: Hug, Kiss, heart_gesture	✅	✅	✅	✅
+### kling-v1.5 の機能対応
 
+| 機能 | STD 5 秒 | STD 10 秒 | PRO 5 秒 | PRO 10 秒 |
+| --- | --- | --- | --- | --- |
+| テキスト→動画（動画生成） | - | - | - | - |
+| その他機能 | - | - | - | - |
+| 画像→動画（動画生成） | ✅ | ✅ | ✅ | ✅ |
+| 開始／終了フレーム | - | - | ✅ | ✅ |
+| 終了フレーム指定 | - | - | ✅ | ✅ |
+| モーションブラシ | - | - | ✅ | - |
+| カメラ制御（簡易操作のみ） | - | - | ✅ | - |
+| その他機能 | - | - | - | - |
+| マルチ画像→動画 | - | - | - | - |
+| 動画延長 | ✅ | ✅ | ✅ | ✅ |
+| リップシンク | ✅ | ✅ | ✅ | ✅ |
+| 動画エフェクト（2 名キャラクター：ハグ／キス／ハートジェスチャー） | ✅ | ✅ | ✅ | ✅ |
 
-kling-v2-master	5s	10s
-text to video	video generation	✅	✅
-others	-	-
-image to video	video generation	✅	✅
-others	-	-
-multi-image2video	-	-
-video extension	-	-
-lip sync	✅	✅
-video effects
-Dual-character: Hug, Kiss, heart_gesture	-	-
-Image Generation
-kling-v1	1:1	16:9	4:3	3:2	2:3	3:4	9:16
-text to image	✅	✅	✅	✅	✅	✅	✅
-image to image	entire image	✅	✅	✅	✅	✅	✅	✅
-others	-	-	-	-	-	-	-
+### kling-v1.6 の機能対応
 
+| 機能 | STD 5 秒 | STD 10 秒 | PRO 5 秒 | PRO 10 秒 |
+| --- | --- | --- | --- | --- |
+| テキスト→動画（動画生成） | ✅ | ✅ | - | - |
+| その他機能 | - | - | - | - |
+| 画像→動画（動画生成） | ✅ | ✅ | ✅ | ✅ |
+| 開始／終了フレーム | - | - | ✅ | ✅ |
+| 終了フレーム指定 | - | - | ✅ | ✅ |
+| その他機能 | - | - | - | - |
+| マルチ画像→動画 | ✅ | ✅ | ✅ | ✅ |
+| 動画延長 | ✅ | ✅ | ✅ | ✅ |
+| リップシンク | ✅ | ✅ | ✅ | ✅ |
+| 動画エフェクト（2 名キャラクター：ハグ／キス／ハートジェスチャー） | ✅ | ✅ | ✅ | ✅ |
 
-kling-v1-5	1:1	16:9	4:3	3:2	2:3	3:4	9:16	21:9
-text to image	✅	✅	✅	✅	✅	✅	✅	✅
-image to image	entire image	-	-	-	-	-	-	-	-
-subject	✅	✅	✅	✅	✅	✅	✅	✅
-face	✅	✅	✅	✅	✅	✅	✅	✅
+### kling-v2 Master の機能対応
 
+| 機能 | 5 秒 | 10 秒 |
+| --- | --- | --- |
+| テキスト→動画（動画生成） | ✅ | ✅ |
+| その他機能 | - | - |
+| 画像→動画（動画生成） | ✅ | ✅ |
+| その他機能 | - | - |
+| マルチ画像→動画 | - | - |
+| 動画延長 | - | - |
+| リップシンク | ✅ | ✅ |
+| 動画エフェクト（2 名キャラクター：ハグ／キス／ハートジェスチャー） | - | - |
 
-kling-v2	1:1	16:9	4:3	3:2	2:3	3:4	9:16	21:9
-text to image	✅	✅	✅	✅	✅	✅	✅	✅
-image to image	all	-	-	-	-	-	-	-	-
+## 画像生成
+
+### kling-v1 の対応
+
+- テキスト→画像：1:1、16:9、4:3、3:2、2:3、3:4、9:16 をサポート
+- 画像→画像（全体変換）：1:1、16:9、4:3、3:2、2:3、3:4、9:16 をサポート
+- その他：該当なし
+
+### kling-v1.5 の対応
+
+- テキスト→画像：1:1、16:9、4:3、3:2、2:3、3:4、9:16、21:9 をサポート
+- 画像→画像（全体変換）：対応なし
+- 画像→画像（被写体指定）：1:1、16:9、4:3、3:2、2:3、3:4、9:16、21:9 をサポート
+- 画像→画像（顔指定）：1:1、16:9、4:3、3:2、2:3、3:4、9:16、21:9 をサポート
+
+### kling-v2 の対応
+
+- テキスト→画像：1:1、16:9、4:3、3:2、2:3、3:4、9:16、21:9 をサポート
+- 画像→画像（全体変換）：対応なし

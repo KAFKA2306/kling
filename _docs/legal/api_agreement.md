@@ -1,69 +1,58 @@
-「Kling AI」Service Level Agreement (SLA)
+「Kling AI」サービスレベル契約（SLA）
 
-This Service Level Agreement (SLA) defines the service availability metrics and compensation scheme for the API solution provided by Kling AI.
-Article 1 Definitions
+本サービスレベル契約（SLA）は、Kling AI が提供する API ソリューションにおけるサービス可用性指標と補償スキームを定めるものです。
 
-1.1 Service Period: A service period is one calendar month. It refers to each calendar month included in the service term purchased by the customer. For example, if the customer purchases the service for three months starting from March 17, the service periods will include four months: the first service period is from March 17 to March 31, the second service period is from April 1 to April 30, the third service period is from May 1 to May 31, and the fourth service period is from June 1 to June 16. Service availability is calculated separately for each service period.
+## 第 1 条 定義
 
-1.2 Error Request: Requests with an HTTP status code of 5XX and requests that do not reach Kling AI’s server due to Kling AI server faults are considered error requests, excluding the following types of requests:
+1.1 サービス期間：サービス期間とは 1 か月の暦月を指します。顧客が購入した契約期間中の各暦月が対象です。例えば、3 月 17 日から 3 か月間サービスを購入した場合、サービス期間は 3 月 17 日～3 月 31 日（第 1 期間）、4 月 1 日～4 月 30 日（第 2 期間）、5 月 1 日～5 月 31 日（第 3 期間）、6 月 1 日～6 月 16 日（第 4 期間）となります。サービス可用性は各サービス期間ごとに個別に算出します。
 
-(i) Error requests or service unavailability caused by reasonable upgrades, changes, or maintenance initiated by Kling AI;
+1.2 エラーリクエスト：HTTP ステータスコード 5XX を返すリクエスト、または Kling AI サーバーの障害によりサーバーへ到達しなかったリクエストを指します。ただし、以下に該当する場合は除きます。  
+(i) Kling AI が合理的なアップグレード、変更、保守を実施したことによるエラーまたはサービス停止。  
+(ii) 顧客のアプリケーションがハッキングされたことにより、Kling AI のサービスがアクセス制限をかけた場合。  
+(iii) コンテンツ違反などの理由でドメインが禁止されたことによるエラー。
 
-(ii) Requests restricted by Kling AI’s service due to the customer’s application being hacked;
+1.3 有効リクエスト：Kling AI のサーバーが受信したリクエストを指します。
 
-(iii) Errors resulting from domain bans due to content violations or other reasons.
+1.4 5 分当たりのエラー率：5 分間のエラーリクエスト数 ÷ 5 分間の有効リクエスト数 × 100% で算出します。
 
-1.3 Valid Request: Requests received by Kling AI’s server are considered valid requests.
+1.5 月額サービス料金：特定アカウントがサービス期間内に発生させた Kling AI API ソリューションの利用料金を指します。
 
-1.4 Error Rate per 5 Minutes: Error rate per 5 minutes = (Number of error requests in 5 minutes / Number of valid requests in 5 minutes) x 100%
+## 第 2 条 サービス可用性
 
-1.5 Monthly Service Fee: The fee incurred for Kling AI’s API solution services for a particular account within a service period.
-Article 2 Service Availability
+2.1 サービス可用性の算出式  
+サービス可用性はサービス期間ごとに算出します。5 分ごとのエラー率を合計し、サービス期間内の 5 分間隔の総数で割った平均エラー率を用いて、以下の式で求めます。
 
-2.1 Service Availability Calculation Formula
+サービス可用性 ＝ {1 − [サービス期間内の 5 分当たりエラー率の総和 ÷ サービス期間内の 5 分間隔の総数]} × 100%
 
-Service availability is calculated based on the service period. The average error rate per 5 minutes is derived by dividing the sum of the error rates per 5 minutes by the total number of 5-minute intervals in the service period. Service availability is then calculated as:
+※ サービス期間内の 5 分間隔の総数 ＝ 12 × 24 × サービス期間の日数
 
-Service Availability = (1 - ∑ Error Rate per 5 Minutes in Service Period / Total Number of 5-Minute Intervals in Service Period) x 100%
+2.2 サービス可用性の保証  
+Kling AI の API ソリューションは 99.90% 以上の可用性を保証します。この保証値を下回った場合、顧客は本契約第 3 条に基づき補償を請求できます。ただし、以下に起因するリクエスト失敗またはサービス停止は補償対象外です。  
+(i) 事前通知されたシステム保守（回線作業、修理、アップグレード、障害訓練など）。  
+(ii) サービス提供者の設備外で発生したネットワーク／機器障害や設定変更。  
+(iii) 顧客アプリケーションまたはデータに対するハッキング。  
+(iv) 顧客の不適切な管理によるデータ・資格情報・パスワードの喪失または漏洩。  
+(v) 製品ドキュメントや推奨利用方法に従わなかったことによる障害。  
+(vi) 顧客自身によるオペレーティングシステムのアップグレードに起因する問題。  
+(vii) 顧客アプリケーションまたはインストール作業による問題。  
+(viii) 顧客の過失または権限を与えられた利用者の操作による問題。  
+(ix) 不可抗力および予見不可能な事象。  
+(x) サービス提供者に帰責できないその他の要因。
 
-Note: Total number of 5-minute intervals in a service period = 12 x 24 x Number of Days in the Service Period.
+## 第 3 条 補償スキーム
 
-2.2 Service Availability Commitment
+3.1 補償基準  
+特定アカウントにおける月間サービス可用性に基づき、以下の表のとおり補償額（Kling AI API ソリューション用バウチャー）を算出します。補償額の上限は該当月のサービス料金の 50%（バウチャーで支払った分を除く）とします。
 
-Kling AI’s API solution service availability is committed to being no less than 99.90%. If this service availability commitment is not met, the customer can claim compensation as stipulated in Section 3 of this agreement. Compensation does not cover request failures or service unavailability caused by the following:
+| サービス可用性 | 補償バウチャー額 |
+| --- | --- |
+| 99.90% 未満、99.00% 以上 | 月額サービス料金の 10% |
+| 99.00% 未満、95.00% 以上 | 月額サービス料金の 25% |
+| 95.00% 未満 | 月額サービス料金の 50% |
 
-(i) System maintenance notified in advance by the service provider, including cutting, repair, upgrades, and fault simulations;
+3.2 補償申請期限  
+顧客は、毎月 5 営業日以降に前月分のサービス停止について補償申請を行えます。申請は、可用性基準を満たさなかった月の終了日から 2 か月以内に提出する必要があります。期限を過ぎた申請は受理されません。
 
-(ii) Network, equipment failures, or configuration adjustments outside the service provider’s equipment;
+## 第 4 条 その他
 
-(iii) Hacking of the customer’s application or data;
-
-(iv) Loss or leakage of data, credentials, or passwords due to improper maintenance or confidentiality by the customer;
-
-(v) Service unavailability due to the customer not following product documentation or usage recommendations;
-
-(vi) Issues caused by the customer’s own operating system upgrades;
-
-(vii) Issues caused by the customer’s application or installation activities;
-
-(viii) Issues caused by customer negligence or authorized user operations;
-
-(ix) Force majeure and unforeseen events;
-
-(x) Other unavailability caused by factors not attributable to the service provider.
-Article 3 Compensation Scheme
-
-3.1 Compensation Standard
-
-Based on the monthly service availability of Kling AI’s API solution for a particular account, compensation amounts are calculated according to the following table. Compensation is provided in the form of vouchers for the Kling AI API solution and is capped at 50% of the monthly service fee for that account (excluding fees paid with vouchers).
-Service Availability	Compensation Voucher Amount
-Below 99.90% but at least 99.00%	10% of Monthly Service Fee
-Below 99.00% but at least 95.00%	25% of Monthly Service Fee
-Below 95.00%	50% of Monthly Service Fee
-
-3.2 Compensation Application Deadline
-
-Customers can apply for compensation for the previous month’s service unavailability after the fifth (5th) working day of each month. Compensation applications must be submitted within two (2) months after the end of the month in which the Kling AI API solution did not meet availability standards. Applications submitted beyond this deadline will not be accepted.
-Article 4 Others
-
-The service provider reserves the right to modify the terms of this SLA. Any modifications will be communicated to the customer by email at least 30 days in advance. If the customer does not agree with the modifications to the SLA, they have the right to stop using the Kling AI API solution. Continued use of the Kling AI API service will be considered as acceptance of the modified SLA.
+サービス提供者は、本 SLA の条項を変更する権利を有します。変更がある場合は少なくとも 30 日前に電子メールで通知します。顧客が変更内容に同意しない場合、Kling AI API ソリューションの利用を停止する権利があります。通知後もサービスを継続利用した場合、変更された SLA に同意したものとみなします。

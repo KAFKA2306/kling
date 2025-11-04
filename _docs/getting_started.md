@@ -1,22 +1,20 @@
-Overview
-What is Kling AI?
+# 概要
 
-Kling AI, the new generation of AI creative productivity tools, is based on the image generation @Kolors and video generation @Kling technology independently developed by Kuaishou’s Large Model Algorithm Team, providing a wealth of AI images, AI videos, and related controllable editing capabilities.
+## Kling AI とは？
 
-    For creators (individuals/enterprises), it provides an online creation platform and tools on the web and mobile devices.
-    For developers (individuals/enterprises), it offers API solutions.
+Kling AI は、Kuaishou のラージモデルアルゴリズムチームが独自に開発した画像生成技術（@Kolors）と動画生成技術（@Kling）を基盤とした次世代の AI クリエイティブ生産性ツールです。AI 画像・AI 動画の生成に加え、自在に制御できる編集機能を提供します。
 
-Get access to 「Kling AI」
+- クリエイター（個人／法人）向けには、Web とモバイルで利用できるオンライン制作プラットフォームとツールを提供します。
+- デベロッパー（個人／法人）向けには、API ソリューションを提供します。
 
-[1] For Users (Individuals/ Enterprises)
+## 「Kling AI」へのアクセス方法
 
-    Web: Kling AI｜Next-generation AI Creative Studio
-    App：Coming soon…
+1. ユーザー（個人／法人）向け  
+   - Web：Kling AI｜次世代 AI クリエイティブスタジオ  
+   - アプリ：近日公開予定
+2. デベロッパー（個人／法人）向け  
+   - アプリ：近日公開予定
 
-[2] For Developers (Individuals/ Enterprises)
+## ユーザーガイド
 
-    App：Coming soon…
-
-User Guide
-
-[1] Prompt Guide：Kling AI Best Practices
+- プロンプトガイド：Kling AI ベストプラクティス

@@ -17,8 +17,7 @@ from tenacity import (
     wait_exponential,
 )
 
-from app.core.third_party_integrations.kling.client import KlingClient
-from app.core.third_party_integrations.kling.models.video_extension import (
+from models.video_extension import (
     VideoExtensionRequest,
     VideoExtensionResponse,
 )
@@ -332,4 +331,3 @@ class VideoExtensionAPI:
 
 
 # Singleton instance
-video_extension_api = VideoExtensionAPI(KlingClient.get_instance()._client)

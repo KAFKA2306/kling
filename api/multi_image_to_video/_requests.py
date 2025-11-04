@@ -1,9 +1,8 @@
+from __future__ import annotations
+
 """
 Request models for Kling AI Multi-Image to Video API.
 """
-from enum import Enum
-from __future__ import annotations
-
 from enum import Enum
 from typing import Literal
 

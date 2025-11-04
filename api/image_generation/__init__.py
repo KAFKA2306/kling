@@ -38,7 +38,7 @@ Example:
     ```
 """
 
-from .client import KlingAIClient, get_client
+# from .client import KlingAIClient, get_client
 from ._requests import (
     ImageGenerationRequest,
     TaskListRequest,
@@ -67,8 +67,8 @@ from ._exceptions import (
 # Re-export public API
 __all__ = [
     # Client
-    "KlingAIClient",
-    "get_client",
+    # "KlingAIClient",
+    # "get_client",
     # Requests
     "ImageGenerationRequest",
     "TaskListRequest",

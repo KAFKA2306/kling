@@ -3,7 +3,7 @@
 from datetime import datetime
 from enum import Enum
 
-from pydantic import BaseModel, Field, HttpUrl
+from pydantic import BaseModel, Field, HttpUrl, RootModel
 
 
 class TaskStatus(str, Enum):
@@ -91,13 +91,13 @@ class TaskResponse(BaseResponse):
         return datetime.fromtimestamp(self.updated_at / 1000)
 
 
-class TaskListResponse(BaseResponse):
+class TaskListResponse(RootModel[list[TaskResponse]]):
     """Response model for listing tasks.
-    
+
     Attributes:
-        __root__: List of task responses.
+        root: List of task responses.
     """
-    __root__: list[TaskResponse] = Field(
+    root: list[TaskResponse] = Field(
         default_factory=list,
         description="List of task responses.",
     )

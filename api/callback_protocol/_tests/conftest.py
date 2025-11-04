@@ -3,7 +3,7 @@ import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
-from ... import router as callback_router
+from api.callback_protocol.callback_protocol import router as callback_router
 
 # Create a test app with the router
 @pytest.fixture

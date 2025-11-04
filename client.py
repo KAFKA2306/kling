@@ -16,11 +16,11 @@ from tenacity import (
     wait_exponential,
 )
 
-from .api.image_to_video.image_to_video import ImageToVideoAPI
-from .api.multi_image_to_video.multi_image_to_video import MultiImageToVideoAPI
-from .api.text_to_video.text_to_video import TextToVideoAPI
-from .api.video_extension.video_extension import VideoExtensionAPI
-from .config import KlingConfig
+from api.image_to_video.image_to_video import ImageToVideoAPI
+from api.multi_image_to_video.multi_image_to_video import MultiImageToVideoAPI
+from api.text_to_video.text_to_video import TextToVideoAPI
+from api.video_extension.video_extension import VideoExtensionAPI
+from config import KlingConfig
 
 # Type variable for generic model parsing
 T = TypeVar("T", bound=BaseModel)
@@ -225,4 +225,3 @@ class KlingClient:
         except ValidationError as e:
             logger.error("Failed to validate response: %s", str(e))
             raise
-

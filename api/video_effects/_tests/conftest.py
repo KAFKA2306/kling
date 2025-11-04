@@ -8,13 +8,13 @@ from unittest.mock import AsyncMock
 import httpx
 import pytest
 
-from app.core.third_party_integrations.kling.api.video_effects._requests import (
+from api.video_effects._requests import (
     CreateVideoEffectRequest,
     EffectType,
     TaskStatus,
     VideoQuality,
 )
-from app.core.third_party_integrations.kling.api.video_effects._responses import (
+from api.video_effects._responses import (
     CancelTaskResponse,
     CreateTaskResponse,
     GetTaskResponse,
@@ -38,7 +38,7 @@ def mock_client():
 @pytest.fixture
 def video_effects_api(mock_client):
     """Create a VideoEffectsAPI instance with a mock client."""
-    from app.core.third_party_integrations.kling.api.video_effects import VideoEffectsAPI
+    from api.video_effects import VideoEffectsAPI
     return VideoEffectsAPI(mock_client, api_key="test_api_key")
 
 

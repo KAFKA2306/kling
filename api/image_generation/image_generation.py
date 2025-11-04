@@ -5,12 +5,15 @@ from __future__ import annotations
 import asyncio
 import logging
 from datetime import datetime
+from typing import TYPE_CHECKING
 
 from pydantic import HttpUrl
 
-from ...client import KlingClient
 from ._requests import ImageGenerationRequest, TaskListRequest
 from ._responses import TaskListResponse, TaskResponse, TaskStatus
+
+if TYPE_CHECKING:
+    from client import KlingClient
 
 logger = logging.getLogger(__name__)
 
@@ -22,7 +25,7 @@ class KlingImageGenerator:
     including creating image generation tasks, checking task status, and listing tasks.
     """
     
-    def __init__(self, client: KlingClient):
+    def __init__(self, client: "KlingClient"):
         """Initialize the image generator with a Kling client.
         
         Args:

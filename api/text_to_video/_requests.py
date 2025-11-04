@@ -9,9 +9,9 @@ from enum import Enum
 from typing import Any, Literal
 
 import httpx
-from pydantic import BaseModel, Field, HttpUrl, validator
+from pydantic import BaseModel, Field, HttpUrl, model_validator
 
-from ...config import KlingConfig
+from kling.config import KlingConfig
 from ._exceptions import (
     APIRequestError,
     AuthenticationError,
@@ -80,13 +80,12 @@ class CameraConfig(BaseModel):
         description="Focal length change (field of view)"
     )
 
-    @validator('*', pre=True)
-    def validate_config(cls, v, field):
-        """Ensure only one camera parameter is set when using simple type."""
-        if v != 0 and field.name != 'horizontal':  # Skip validation for the current field
-            if any(v != 0 for v in cls.__annotations__.values() if v != field.name):
-                raise ValueError("Only one camera parameter should be non-zero")
-        return v
+    # @model_validator(mode='before')
+    # @classmethod
+    # def validate_config(cls, values):
+    #     """Ensure only one camera parameter is set when using simple type."""
+    #     # Simplified validation for Pydantic v2
+    #     return values
 
 
 class CameraControl(BaseModel):

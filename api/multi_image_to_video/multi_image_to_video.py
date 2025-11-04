@@ -13,9 +13,13 @@ from typing import Any
 
 from pydantic import HttpUrl
 
-from ...client import KlingClient
-from ...config import KlingConfig
-from ...models.multi_image_to_video import MultiImageToVideoTask
+from typing import TYPE_CHECKING
+
+from config import KlingConfig
+from models.multi_image_to_video import MultiImageToVideoTask
+
+if TYPE_CHECKING:
+    from client import KlingClient
 from ._exceptions import (
     MultiImageToVideoTaskError,
     handle_api_error,
@@ -33,7 +37,7 @@ class MultiImageToVideoAPI:
     This class should be instantiated by the main KlingClient singleton and accessed via `client.multi_image_to_video`.
     Provides methods to create/manage multi-image-to-video tasks, check task status, and handle errors with strong typing and validation.
     """
-    def __init__(self, client: KlingClient) -> None:
+    def __init__(self, client: "KlingClient") -> None:
         """
         Args:
             client: The singleton KlingClient instance

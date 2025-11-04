@@ -1,119 +1,105 @@
-Prepaid Resource Packs
-Video Generation Resource Package
+# プリペイドリソースパック
 
-    Description: A general-purpose credit package for video generation.
-    Usage: Enables access to image generation API capabilities, including text-to-video, image-to-video, video-extension and lip-sync.
-    Credit Price: The standard price for each video generation credit is $0.14 USD.
-    Validity Period: Each package comes with a specific activation and expiration date. Once expired, unused credits will become invalid and cannot be used.
-    Concurrency: Refers to the number of videos that can be generated simultaneously.
-    Package Tiers: Within the same validity period, the more credits and higher concurrency a package offers, the lower the discount. Three basic package tiers are available as a reference. (For business customization or bulk purchases, please contact us through official channels.)
+## 動画生成リソースパック
 
+- 説明：動画生成で利用できる汎用クレジットパックです。
+- 利用範囲：text-to-video、image-to-video、multi-image-to-video、video-extension、lip-sync、video-effects などの API が利用可能です。
+- クレジット単価：標準価格は 1 クレジットあたり 0.14 米ドルです。
+- 有効期限：各パッケージにはアクティベーション日と失効日が設定され、期限切れの未使用クレジットは無効になります。
+- 同時実行：同時に生成できる動画本数を示します。
+- ティア構成：同じ有効期間では、クレジット数と同時実行数が多いほど割引率が高くなります。以下は参考用の 3 ティアです（大口調達やカスタマイズは公式チャネルまでお問い合わせください）。
 
-Tier	Model Version	Concurrency	Credits	Supporter Feature	Expiration Period	Pricing	Discount	Pricing After Discount	MOQ
-B1	V1.0
-V1.5
-V1.6
-V2.0	5	10,000	text-to-video
-image-to-video
-multi-image-to-video
-video-extension
-lip-sync
-video-effects	1 month	$1,400	0%	$1,400	3 months
-B2	15,000	$2,100	10%	$1,890	3 months
-B3	20,000	$2,800	20%	$2,240	3 months
+| ティア | 対応モデル | 同時実行数 | クレジット数 | 対応機能 | 有効期間 | 価格 (USD) | 割引率 | 割引後価格 (USD) | 最低契約期間 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| B1 | V1.0 / V1.5 / V1.6 / V2.0 | 5 | 10,000 | text-to-video、image-to-video、multi-image-to-video、video-extension、lip-sync、video-effects | 1 か月 | 1,400 | 0% | 1,400 | 3 か月 |
+| B2 | 同上 | 5 | 15,000 | 同上 | 1 か月 | 2,100 | 10% | 1,890 | 3 か月 |
+| B3 | 同上 | 5 | 20,000 | 同上 | 1 か月 | 2,800 | 20% | 2,240 | 3 か月 |
 
+- 注記 1：消費クレジット数は、利用するモデルとモードによって異なります（下記「クレジット消費の詳細」を参照）。
+- 注記 2：タスクが失敗した場合は、理由を問わずクレジットは差し引かれません（コンテンツモデレーション起因の失敗も含む）。
 
-Note 1: The number of credits deducted varies depending on the model and mode used during generation (see "Credit Deduction Details").
-Note 2: No credits will be deducted for failed tasks, regardless of the reason for failure, including failures due to content moderation policies.
+#### クレジット消費の詳細
 
-    Credit Deduction Details
+| 動画仕様 | 差し引かれるクレジット | 単価（割引前） |
+| --- | --- | --- |
+| 【Kling V1.0】スタンダードモード、5 秒 | 合計から 1 | $0.14 |
+| 【Kling V1.0】スタンダードモード、10 秒 | 合計から 2 | $0.28 |
+| 【Kling V1.0】プロフェッショナルモード、5 秒 | 合計から 3.5 | $0.49 |
+| 【Kling V1.0】プロフェッショナルモード、10 秒 | 合計から 7 | $0.98 |
+| 【Kling V1.5】スタンダードモード、5 秒 | 合計から 2 | $0.28 |
+| 【Kling V1.5】スタンダードモード、10 秒 | 合計から 4 | $0.56 |
+| 【Kling V1.5】プロフェッショナルモード、5 秒 | 合計から 3.5 | $0.49 |
+| 【Kling V1.5】プロフェッショナルモード、10 秒 | 合計から 7 | $0.98 |
+| 【Kling V1.6】スタンダードモード、5 秒 | 合計から 2 | $0.28 |
+| 【Kling V1.6】スタンダードモード、10 秒 | 合計から 4 | $0.56 |
+| 【Kling V1.6】プロフェッショナルモード、5 秒 | 合計から 3.5 | $0.49 |
+| 【Kling V1.6】プロフェッショナルモード、10 秒 | 合計から 7 | $0.98 |
+| 【Kling V1.6】マルチイメージ→動画、スタンダードモード、5 秒 | 合計から 2 | $0.28 |
+| 【Kling V1.6】マルチイメージ→動画、スタンダードモード、10 秒 | 合計から 4 | $0.56 |
+| 【Kling V1.6】マルチイメージ→動画、プロフェッショナルモード、5 秒 | 合計から 3.5 | $0.49 |
+| 【Kling V1.6】マルチイメージ→動画、プロフェッショナルモード、10 秒 | 合計から 7 | $0.98 |
+| 【Kling V2.0 Master】5 秒 | 合計から 10 | $1.40 |
+| 【Kling V2.0 Master】10 秒 | 合計から 20 | $2.80 |
+| 【Kling V1.0】動画延長、スタンダードモード、4～5 秒 | 合計から 1 | $0.14 |
+| 【Kling V1.0】動画延長、プロフェッショナルモード、4～5 秒 | 合計から 3.5 | $0.49 |
+| 【Kling V1.5】動画延長、スタンダードモード、4～5 秒 | 合計から 2 | $0.28 |
+| 【Kling V1.5】動画延長、プロフェッショナルモード、4～5 秒 | 合計から 3.5 | $0.49 |
+| 【Kling V1.6】動画延長、スタンダードモード、4～5 秒 | 合計から 2 | $0.28 |
+| 【Kling V1.6】動画延長、プロフェッショナルモード、4～5 秒 | 合計から 3.5 | $0.49 |
+| 【Lip-sync】5 秒 | 合計から 0.5 | $0.07 |
+| 【Lip-sync】10 秒 | 合計から 1 | $0.14 |
+| 【Single Image Effect】Kling 1.6 × 5 秒（fuzzyfuzzy / squish / expansion） | 合計から 2 | $0.28 |
+| 【Single Image Effect】Kling 1.6 × 5 秒（dizzydizzy / bloombloom） | 合計から 3.5 | $0.49 |
 
+## 画像生成リソースパック
 
-Single Video Specification	Resource Package Deduction Count	Unit Price (Excluding Discount)
-【Kling V1.0】Standard mode, 5-second video duration	Deduct 1 count from total	$0.14
-【Kling V1.0】Standard mode, 10-second video duration	Deduct 2 counts from total	$0.28
-【Kling V1.0】Professional mode, 5-second video duration	Deduct 3.5 counts from total	$0.49
-【Kling V1.0】Professional mode, 10-second video duration	Deduct 7 counts from total	$0.98
-【Kling V1.5】Standard mode, 5-second video duration	Deduct 2 counts from total	$0.28
-【Kling V1.5】Standard mode, 10-second video duration	Deduct 4 counts from total	$0.56
-【Kling V1.5】Professional mode, 5-second video duration	Deduct 3.5 counts from total	$0.49
-【Kling V1.5】Professional mode, 10-second video duration	Deduct 7 counts from total	$0.98
-【Kling V1.6】Standard mode, 5-second video duration	Deduct 2 count from total	$0.28
-【Kling V1.6】Standard mode, 10-second video duration	Deduct 4 counts from total	$0.56
-【Kling V1.6】Professional mode, 5-second video duration	Deduct 3.5 counts from total	$0.49
-【Kling V1.6】Professional mode, 10-second video duration	Deduct 7 counts from total	$0.98
-【Kling V1.6 multi-image to video】Standard mode, 5-second video duration	Deduct 2 counts from total	$0.28
-【Kling V1.6 multi-image to video】Standard mode, 10-second video duration	Deduct 4 counts from total	$0.56
-【Kling V1.6 multi-image to video】Professional mode, 5-second video duration	Deduct 3.5 counts from total	$0.49
-【Kling V1.6 multi-image to video】Professional mode, 10-second video duration	Deduct 7 counts from total	$0.98
-【Kling V2.0 Master】5-second video duration	Deduct 10 counts from total	$1.4
-【Kling V2.0 Master】10-second video duration	Deduct 20 counts from total	$2.8
-【Kling V1.0】Video extension, Standard mode, 4~5-second video duration	Deduct 1 count from total	$0.14
-【Kling V1.0】Video extension, Professional mode, 4~5-second video duration	Deduct 3.5 counts from total	$0.49
-【Kling V1.5】Video extension, Standard mode, 4~5-second video duration	Deduct 2 count from total	$0.28
-【Kling V1.5】Video extension, Professional mode, 4~5-second video duration	Deduct 3.5 counts from total	$0.49
-【Kling V1.6】Video extension, Standard mode, 4~5-second video duration	Deduct 2 count from total	$0.28
-【Kling V1.6】Video extension, Professional mode, 4~5-second video duration	Deduct 3.5 counts from total	$0.49
-【Lip-sync】5-second video duration	Deduct 0.5 count from total	$0.07
-【Lip-sync】10-second video duration	Deduct 1 count from total	$0.14
-【Single Image Effect】Kling 1.6 x 5-second video duration (fuzzyfuzzy/squish/expansion)	Deduct 2 count from total	$0.28
-【Single Image Effect】Kling 1.6 x 5-second video duration (dizzydizzy/bloombloom)	Deduct 3.5 count from total	$0.49
-Image Generation Resource Package
+- 説明：画像生成で利用できる汎用クレジットパックです。
+- 利用範囲：text-to-image、image-to-image などの API が利用可能です。
+- クレジット単価：標準価格は 1 クレジットあたり 0.0035 米ドルです。
+- 有効期限：各パッケージにはアクティベーション日と失効日が設定され、期限切れの未使用クレジットは無効になります。
+- 同時実行：同時に生成できる画像枚数を示します。
+- ティア構成：同じ有効期間では、クレジット数と同時実行数が多いほど割引率が高くなります。以下は参考用の 3 ティアです（大口調達やカスタマイズは公式チャネルまでお問い合わせください）。
 
-    Description: A general-purpose credit package for image generation.
-    Usage: Enables access to image generation API capabilities, including text-to-image and image-to-image generation.
-    Credit Price: The standard price for each image generation credit is $0.0035 USD.
-    Validity Period: Each package comes with a specific activation and expiration date. Once expired, unused credits will become invalid and cannot be used.
-    Concurrency: Refers to the number of images that can be generated simultaneously.
-    Package Tiers: Within the same validity period, the more credits and higher concurrency a package offers, the lower the discount. Three basic package tiers are available as a reference. (For business customization or bulk purchases, please contact us through official channels.)
+| ティア | 対応モデル | 同時実行数 | クレジット数 | 対応機能 | 有効期間 | 価格 (USD) | 割引率 | 割引後価格 (USD) | 最低契約期間 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| B1 | V1.0 / V1.5 / V2.0 | 9 | 200,000 | text-to-image、image-to-image | 1 か月 | 700 | 0% | 700 | 3 か月 |
+| B2 | 同上 | 9 | 400,000 | 同上 | 1 か月 | 1,400 | 10% | 1,260 | 3 か月 |
+| B3 | 同上 | 9 | 600,000 | 同上 | 1 か月 | 2,100 | 20% | 1,680 | 3 か月 |
 
+- 注記 1：消費クレジット数は、利用するモデルやモードによって異なります（下記「クレジット消費の詳細」を参照）。
+- 注記 2：タスクが失敗した場合は理由を問わずクレジットは差し引かれません。
 
-Tier	Model Version	Concurrency	Credits	Supporter Feature	Expiration Period	Pricing	Discount	Pricing After Discount	MOQ
-B1	V1.0
-V1.5
-V2.0	9	200,000	text-to-image
-image-to-image	1 month	$700	0%	$700	3 months
-B2	V1.0
-V1.5
-V2.0	400,000	$1,400	10%	$1,260	3 months
-B3	V1.0
-V1.5
-V2.0	600,000	$2,100	20%	$1,680	3 months
+#### クレジット消費の詳細
 
+| 画像仕様 | 差し引かれるクレジット | 単価（割引前） |
+| --- | --- | --- |
+| 【Kolors V1.0】text-to-image | 合計から 1 | $0.0035 |
+| 【Kolors V1.0】image-to-image | 合計から 1 | $0.0035 |
+| 【Kolors V1.5】text-to-image | 合計から 4 | $0.014 |
+| 【Kolors V1.5】image-to-image | 合計から 8 | $0.028 |
+| 【Kolors V2.0】text-to-image | 合計から 4 | $0.014 |
 
-Note 1: The number of credits deducted varies depending on the model and mode used during generation (see "Credit Deduction Details").
-Note 2: No credits will be deducted for failed tasks, regardless of the reason for failure, including failures due to content moderation policies.
+## バーチャル試着リソースパック
 
-    Credit Deduction Details
+- 説明：バーチャル試着機能に利用できる汎用クレジットパックです。
+- 利用範囲：バーチャル試着関連の画像生成 API が利用可能です。
+- クレジット単価：標準価格は 1 クレジットあたり 0.07 米ドルです。
+- 有効期限：各パッケージにはアクティベーション日と失効日が設定され、期限切れの未使用クレジットは無効になります。
+- 同時実行：同時に生成できる試着画像枚数を示します。
+- ティア構成：同じ有効期間では、クレジット数と同時実行数が多いほど割引率が高くなります。以下は参考用の 3 ティアです（大口調達やカスタマイズは公式チャネルまでお問い合わせください）。
 
+| ティア | 対応モデル | 同時実行数 | クレジット数 | 対応機能 | 有効期間 | 価格 (USD) | 割引率 | 割引後価格 (USD) | 最低契約期間 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| B1 | V1 / V1.5 | 9 | 10,000 | virtual try-on | 1 か月 | 700 | 0% | 700 | 3 か月 |
+| B2 | V1 / V1.5 | 9 | 20,000 | virtual try-on | 1 か月 | 1,400 | 10% | 1,260 | 3 か月 |
+| B3 | V1 / V1.5 | 9 | 30,000 | virtual try-on | 1 か月 | 2,100 | 20% | 1,680 | 3 か月 |
 
-Single Image Specification	Resource Package Deduction Count	Pricing (Original)
-【Kolors V1.0】text-to-image	Deduct 1 count from total	$0.0035
-【Kolors V1.0】image-to-image	Deduct 1 count from total	$0.0035
-【Kolors V1.5】text-to-image	Deduct 4 count from total	$0.014
-【Kolors V1.5】image-to-image	Deduct 8 count from total	$0.028
-【Kolors V2.0】text-to-image	Deduct 4 count from total	$0.014
-Virtual Try-on Resource Package
+- 注記 1：消費クレジット数は、利用するモデルやモードによって異なります（下記「クレジット消費の詳細」を参照）。
+- 注記 2：タスクが失敗した場合は理由を問わずクレジットは差し引かれません（コンテンツモデレーション起因の失敗も含む）。
 
-    Description: A general-purpose credit package for virtual try-on.
-    Usage: Enables access to image generation API capabilities, including virtual try-on.
-    Credit Price: The standard price for each virtual try-on credit is $0.07 USD.
-    Validity Period: Each package comes with a specific activation and expiration date. Once expired, unused credits will become invalid and cannot be used.
-    Concurrency: Refers to the number of images that can be generated simultaneously.
-    Package Tiers: Within the same validity period, the more credits and higher concurrency a package offers, the lower the discount. Three basic package tiers are available as a reference. (For business customization or bulk purchases, please contact us through official channels.)
+#### クレジット消費の詳細
 
-
-Tier	Model Version	Concurrency	Credits	Supporter Feature	Expiration Period	Pricing	Discount	Pricing After Discount	MOQ
-B1	V1, V1.5	9	10,000	virtual try-on	1 month	$700	0%	$700	3 months
-B2	V1, V1.5	9	20,000	virtual try-on	1 month	$1,400	10%	$1,260	3 months
-B3	V1, V1.5	9	30,000	virtual try-on	1 month	$2,100	20%	$1,680	3 months
-
-
-Note 1: The number of credits deducted varies depending on the model and mode used during generation (see "Credit Deduction Details").
-Note 2: No credits will be deducted for failed tasks, regardless of the reason for failure, including failures due to content moderation policies.
-
-    Credit Deduction Details
-
-Single Image Specification	Resource Package Deduction Count	Pricing (Original)
-【Kolors-Virtual-Try-on V1.0】	Deduct 1 count from total	$0.07
-【Kolors-Virtual-Try-on V1.5】	Deduct 1 count from total	$0.07
+| 仕様 | 差し引かれるクレジット | 単価（割引前） |
+| --- | --- | --- |
+| 【Kolors Virtual Try-on V1.0】 | 合計から 1 | $0.07 |
+| 【Kolors Virtual Try-on V1.5】 | 合計から 1 | $0.07 |

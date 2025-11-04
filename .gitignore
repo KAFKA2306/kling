@@ -1,0 +1,76 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Build and packaging artifacts
+.eggs/
+*.egg-info/
+*.egg
+build/
+dist/
+wheelhouse/
+pip-wheel-metadata/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# Environment and secret files
+.env
+.env.*
+.secrets*
+secrets/
+.direnv/
+.envrc
+*.pem
+*.key
+*.crt
+*.p12
+
+# Test, coverage, and lint caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.pytype/
+.pyright/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.hypothesis/
+.nox/
+.tox/
+
+# Logs and runtime files
+*.log
+logs/
+*.pid
+*.pid.lock
+
+# Editor and IDE settings
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+.DS_Store
+Thumbs.db
+
+# Miscellaneous temporary files
+*.bak
+*.tmp
+*.swp
+*.swo
+*.orig
+*.rej
+.cache/
+
+# Local data artifacts
+*.sqlite3
+*.db
+*.db-journal
+*.sqlite

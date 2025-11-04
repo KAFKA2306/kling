@@ -7,13 +7,12 @@ under your Kling AI account.
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
-
-from ...client import KlingClient
 from ._requests import AccountCostsRequest
 from ._responses import AccountCostsResponse
 
 if TYPE_CHECKING:
     from datetime import datetime
+    from client import KlingClient
 
 __all__ = [
     # Models
@@ -28,7 +27,7 @@ ACCOUNT_COSTS_ENDPOINT = "/account/costs"
 
 
 async def get_account_costs(
-    client: KlingClient,
+    client: "KlingClient",
     start_time: int | datetime,
     end_time: int | datetime,
     resource_pack_name: str | None = None,

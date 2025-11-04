@@ -8,7 +8,7 @@ from unittest.mock import AsyncMock, MagicMock
 import pytest
 from httpx import AsyncClient
 
-from app.core.third_party_integrations.kling.api.virtual_try_on.virtual_try_on import VirtualTryOnAPI
+from api.virtual_try_on.virtual_try_on import VirtualTryOnAPI
 
 
 @pytest.fixture

@@ -3,7 +3,7 @@ Kling AI API configuration and constants.
 """
 from enum import Enum
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, model_validator
 
 
 class KlingModelName(str, Enum):
@@ -74,14 +74,17 @@ class CameraConfig(BaseModel):
         description="Zoom level (-10 to 10), negative for zoom in, positive for zoom out",
     )
 
-    @validator('*', pre=True)
-    def check_single_value_set(cls, v, values, field, **kwargs):
+    @model_validator(mode='before')
+    @classmethod
+    def check_single_value_set(cls, values):
         """Ensure only one camera movement parameter is set when type is simple."""
-        if field.name == 'type' and v == CameraMovementType.SIMPLE:
-            non_none = [k for k, v in values.items() if v is not None and k != 'type']
-            if len(non_none) > 1:
-                raise ValueError("Only one camera movement parameter can be set when type is 'simple'")
-        return v
+        if isinstance(values, dict):
+            movement_type = values.get('type')
+            if movement_type == CameraMovementType.SIMPLE:
+                non_none = [k for k, v in values.items() if v is not None and k != 'type']
+                if len(non_none) > 1:
+                    raise ValueError("Only one camera movement parameter can be set when type is 'simple'")
+        return values
 
 
 class CameraControl(BaseModel):

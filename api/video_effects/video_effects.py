@@ -8,7 +8,7 @@ from typing import Any
 import httpx
 from pydantic import ValidationError
 
-from app.core.third_party_integrations.kling.api.video_effects._exceptions import (
+from ._exceptions import (
     VideoEffectsConnectionError,
     VideoEffectsError,
     VideoEffectsNotFoundError,
@@ -18,12 +18,12 @@ from app.core.third_party_integrations.kling.api.video_effects._exceptions impor
     VideoEffectsUnauthorizedError,
     VideoEffectsValidationError,
 )
-from app.core.third_party_integrations.kling.api.video_effects._requests import (
+from ._requests import (
     CreateVideoEffectRequest,
-    ListTasksRequest,
+   ListTasksRequest,
     TaskStatus,
 )
-from app.core.third_party_integrations.kling.api.video_effects._responses import (
+from ._responses import (
     CancelTaskResponse,
     CreateTaskResponse,
     GetTaskResponse,
@@ -46,7 +46,7 @@ class VideoEffectsAPI:
     Example:
         ```python
         import httpx
-        from app.core.third_party_integrations.kling.api.video_effects import VideoEffectsAPI
+        from api.video_effects import VideoEffectsAPI
         
         async with httpx.AsyncClient() as client:
             api = VideoEffectsAPI(client, api_key="your-api-key")

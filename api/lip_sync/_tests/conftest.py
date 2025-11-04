@@ -7,7 +7,7 @@ import pytest
 import pytest_asyncio
 import httpx
 
-from app.core.third_party_integrations.kling.api.lip_sync.lip_sync import LipSyncAPI
+from api.lip_sync.lip_sync import LipSyncAPI
 
 
 @pytest.fixture

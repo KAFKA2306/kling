@@ -54,7 +54,8 @@ class TaskResponse(BaseModel):
         description="Task result, available when task is completed"
     )
 
-    @field_validator('created_at', 'updated_at', pre=True)
+    @field_validator('created_at', 'updated_at', mode='before')
+    @classmethod
     def convert_timestamps(cls, v: int) -> int:
         """Convert timestamps to milliseconds if they're in seconds."""
         if v < 1_000_000_000:  # Likely in seconds

@@ -16,8 +16,7 @@ from tenacity import (
     wait_exponential,
 )
 
-from app.core.third_party_integrations.kling.client import KlingClient
-from app.core.third_party_integrations.kling.models.lip_sync import (
+from models.lip_sync import (
     LipSyncRequest,
     LipSyncResponse,
 )
@@ -233,6 +232,3 @@ class LipSyncAPI:
             logger.error("Error cancelling task %s: %s", task_id, e)
             raise LipSyncError("Failed to cancel task") from e
 
-
-# Singleton instance
-lip_sync_api = LipSyncAPI(KlingClient.get_instance()._client)

@@ -5,11 +5,10 @@ from __future__ import annotations
 
 import asyncio
 import logging
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from pydantic import ValidationError
 
-from ...client import KlingClient
 from ._exceptions import (
     APIError,
     AuthenticationError,
@@ -23,6 +22,9 @@ from ._exceptions import (
 from ._requests import TaskListQuery, VirtualTryOnRequest
 from ._responses import TaskListResponse, TaskResponse, VirtualTryOnTaskResponse
 
+if TYPE_CHECKING:
+    from client import KlingClient
+
 logger = logging.getLogger(__name__)
 
 class VirtualTryOnAPI:
@@ -32,7 +34,7 @@ class VirtualTryOnAPI:
     including creating virtual try-on tasks, checking task status, and listing tasks.
     """
     
-    def __init__(self, client: KlingClient):
+    def __init__(self, client: "KlingClient"):
         """Initialize the virtual try-on client with a Kling client.
         
         Args:

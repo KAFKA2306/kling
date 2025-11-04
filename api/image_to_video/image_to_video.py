@@ -12,7 +12,10 @@ from datetime import datetime
 
 from pydantic import ValidationError
 
-from ...client import KlingClient
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from client import KlingClient
 from ._exceptions import TaskFailedError, handle_api_error
 from ._exceptions import ValidationError as KlingValidationError
 from ._requests import ImageToVideoRequest
@@ -36,7 +39,7 @@ class ImageToVideoAPI:
     This class should be instantiated by the main KlingClient singleton and accessed via `client.image_to_video`.
     Provides methods to create/manage image-to-video generation tasks, check task status, list tasks, wait for completion, and download videos.
     """
-    def __init__(self, client: KlingClient) -> None:
+    def __init__(self, client: "KlingClient") -> None:
         """
         Args:
             client: The singleton KlingClient instance
@@ -169,4 +172,3 @@ class ImageToVideoAPI:
                         f.write(chunk)
         except Exception as exc:
             raise OSError(f"Failed to download video from {url}") from exc
-

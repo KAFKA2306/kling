@@ -1,181 +1,140 @@
-Feature List
-Main Feature	Sub Feature	Sub Feature Sub-sub Feature	Feature Details
-Image Generation	Text to image
-Image to image	Create Task	
+# 機能一覧
 
-    Supports text prompts (including positive and negative)
-    Supports uploading reference images and customizing the reference strength
-    Supports setting the aspect ratio of the generated images (width: height)
-    Supports generating multiple images in a single request
+## 画像生成
 
-Query Task (Single)	
+### テキスト→画像 / 画像→画像
 
-    Supports querying task status and results by single task ID
+- **タスク作成**
+  - 正と負のテキストプロンプトに対応
+  - 参照画像をアップロードして参照強度を調整可能
+  - 生成画像のアスペクト比（幅:高さ）を設定可能
+  - 1 回のリクエストで複数画像を生成可能
+- **タスク照会（単一）**
+  - タスク ID ごとにステータスと結果を取得
+- **タスク照会（一覧）**
+  - 全タスクのステータスと結果を一覧で取得
+  - ページネーションでの検索に対応
+- **コールバック**
+  - タスク作成時にコールバック URL を指定可能
+  - タスクのステータス変化時に自動コールバックを送信
 
-Query Task (List)	
+## 動画生成
 
-    Supports querying the status and results of all tasks
-    Supports querying with pagination
+### テキスト→動画
 
-Callback	
+- **タスク作成**
+  - 正と負のテキストプロンプトに対応
+  - 参照強度と創造性の強度をカスタマイズ可能
+  - 生成モードを選択可能  
+    - スタンダードモード：コスト効率を重視  
+    - プロフェッショナルモード：高性能で高品質な生成
+  - カメラ制御に対応  
+    - 基本的なカメラワーク 6 種類  
+    - マスターショット 4 種類
+  - 生成動画のアスペクト比（幅:高さ）を設定可能
+  - 生成動画の長さを設定可能
+- **タスク照会（単一）**
+  - タスク ID ごとにステータスと結果を取得
+- **タスク照会（一覧）**
+  - 全タスクのステータスと結果を一覧で取得
+  - ページネーションでの検索に対応
+- **コールバック**
+  - タスク作成時にコールバック URL を指定可能
+  - タスクのステータス変化時に自動コールバックを送信
 
-    Supports specifying a callback URL when creating a task
-    Supports proactive callback when the task status changes
+### 画像→動画
 
-Video Generation	Text to video	Create Task	
+- **タスク作成**
+  - 正と負のテキストプロンプトに対応
+  - 参照画像をアップロード可能
+  - 開始フレーム／終了フレームのアップロードに対応
+  - 参照強度と創造性の強度をカスタマイズ可能
+  - 生成モードを選択可能  
+    - スタンダードモード：高効率で高速生成  
+    - プロフェッショナルモード：高性能で高品質な生成
+  - 生成動画の長さを設定可能
+- **タスク照会（単一）**
+  - タスク ID ごとにステータスと結果を取得
+- **タスク照会（一覧）**
+  - 全タスクのステータスと結果を一覧で取得
+  - ページネーションでの検索に対応
+- **コールバック**
+  - タスク作成時にコールバック URL を指定可能
+  - タスクのステータス変化時に自動コールバックを送信
 
-    Supports text prompts (including positive and negative)
-    Supports customizing the reference&creativity strength
-    Supports different generation modes
-        Standard Mode：the basic mode, which is cost-effective
-        Professional Mode：with high performance, better generation quality
-    Supports camera control
-        Basic camera movement：6 options -Master shot：4 options
-    Supports setting the aspect ratio of the generated videos (width: height)
-    Supports setting the generated video length
+### 複数画像→動画
 
-Query Task (Single)	
+- **タスク作成**
+  - 正と負のテキストプロンプトに対応
+  - 複数の参照画像をアップロード可能
+  - 参照強度と創造性の強度をカスタマイズ可能
+  - 生成モードを選択可能  
+    - スタンダードモード：高効率で高速生成  
+    - プロフェッショナルモード：高性能で高品質な生成
+  - 生成動画の長さを設定可能
+  - 出力動画のアスペクト比（幅:高さ）を設定可能
+- **タスク照会（単一）**
+  - タスク ID ごとにステータスと結果を取得
+- **タスク照会（一覧）**
+  - 全タスクのステータスと結果を一覧で取得
+  - ページネーションでの検索に対応
+- **コールバック**
+  - タスク作成時にコールバック URL を指定可能
+  - タスクのステータス変化時に自動コールバックを送信
 
-    Supports querying task status and results by single task ID
+### 動画延長
 
-Query Task (List)	
+- **タスク作成**
+  - 生成済み動画のタスク ID をアップロードして延長処理を実行
+  - 正のテキストプロンプトに対応
+- **タスク照会（単一）**
+  - タスク ID ごとにステータスと結果を取得
+- **タスク照会（一覧）**
+  - 全タスクのステータスと結果を一覧で取得
+  - ページネーションでの検索に対応
+- **コールバック**
+  - タスク作成時にコールバック URL を指定可能
+  - タスクのステータス変化時に自動コールバックを送信
 
-    Supports querying the status and results of all tasks
-    Supports querying with pagination
+### リップシンク
 
-Callback	
+- **タスク作成**
+  - 動画 ID を指定
+  - 動画生成モードを選択  
+    - テキスト→動画：リップシンク動画を生成するためのテキスト、ボイス ID、言語、話速を指定  
+    - 音声→動画：音声ファイルをアップロード
+- **タスク照会（単一）**
+  - タスク ID ごとにステータスと結果を取得
+- **タスク照会（一覧）**
+  - 全タスクのステータスと結果を一覧で取得
+  - ページネーションでの検索に対応
+- **コールバック**
+  - タスク作成時にコールバック URL を指定可能
+  - タスクのステータス変化時に自動コールバックを送信
 
-    Supports specifying a callback URL when creating a task
-    Supports proactive callback when the task status changes
+### 動画エフェクト
 
-Image to video	Create Task	
+- **タスク作成**
+  - シーンごとに適用する特殊効果を指定し、必要なパラメーターを入力可能
+- **タスク照会（単一）**
+  - タスク ID ごとにステータスと結果を取得
+- **タスク照会（一覧）**
+  - 全タスクのステータスと結果を一覧で取得
+  - ページネーションでの検索に対応
+- **コールバック**
+  - タスク作成時にコールバック URL を指定可能
+  - タスクのステータス変化時に自動コールバックを送信
 
-    Supports text prompts (including positive and negative)
-    Supports uploading reference images
-    Supports uploading Start/End Frames
-    Supports customizing the reference&creativity strength
-    Supports different generation modes
-        Standard Mode：with high efficiency, faster generation speed
-        Professional Mode：with high performance, better generation quality
-    Supports setting the generated video length
+## バーチャル試着（Kolors Virtual Try-on）
 
-Query Task (Single)	
-
-    Supports querying task status and results by single task ID
-
-Query Task (List)	
-
-    Supports querying the status and results of all tasks
-    Supports querying with pagination
-
-Callback	
-
-    Supports specifying a callback URL when creating a task
-    Supports proactive callback when the task status changes
-
-Multi-Image to video	Create Task	
-
-    Supports text prompts (including positive and negative)
-    Supports uploading reference images（multiple）
-    Supports customizing the reference&creativity strength
-    Supports different generation modes
-        Standard Mode：with high efficiency, faster generation speed
-        Professional Mode：with high performance, better generation quality
-    Supports setting the generated video length
-    Supports setting the aspect ratio of the generated images (width: height)
-
-Query Task (Single)	
-
-    Supports querying task status and results by single task ID
-
-Query Task (List)	
-
-    Supports querying the status and results of all tasks
-    Supports querying with pagination
-
-Callback	
-
-    Supports specifying a callback URL when creating a task
-    Supports proactive callback when the task status changes
-
-Video Extension	Create Task	
-
-    Supports uploading generated video task IDs
-    Supports text prompts (positive prompt only)
-
-Query Task (Single)	
-
-    Supports querying task status and results by single task ID
-
-Query Task (List)	
-
-    Supports querying the status and results of all tasks
-    Supports querying with pagination
-
-Callback	
-
-    Supports specifying a callback URL when creating a task
-    Supports proactive callback when the task status changes
-
-Lip-Sync	Create Task	
-
-    Video ID
-    Video Generation Mode
-        Text-to-Video
-            Text content for generating the lip-sync video
-            Voice ID
-            Voice language
-            Speech speed
-        Audio-to-Video
-            Audio file
-
-Query Task (Single)	
-
-    Supports querying task status and results by single task ID
-
-Query Task (List)	
-
-    Supports querying the status and results of all tasks
-    Supports querying with pagination
-
-Callback	
-
-    Supports specifying a callback URL when creating a task
-    Supports proactive callback when the task status changes
-
-Video Effects	Create Task	
-
-    Supports the designation of special effect scenes and allows for the input of different parameters according to the various scenes
-
-Query Task (Single)	
-
-    Supports querying task status and results by single task ID
-
-Query Task (List)	
-
-    Supports querying the status and results of all tasks
-    Supports querying with pagination
-
-Callback	
-
-    Supports specifying a callback URL when creating a task
-    Supports proactive callback when the task status changes
-
-Virtual Try-on	Kolors Virtual Try-on	Create Task	
-
-    Supports uploading reference image of model
-    Supports uploading reference image of clothing
-
-Query Task (Single)	
-
-    Supports querying task status and results by single task ID
-
-Query Task (List)	
-
-    Supports querying the status and results of all tasks
-    Supports querying with pagination
-
-Callback	
-
-    Supports specifying a callback URL when creating a task
-    Supports proactive callback when the task status changes
+- **タスク作成**
+  - モデルの参照画像をアップロード
+  - 衣装の参照画像をアップロード
+- **タスク照会（単一）**
+  - タスク ID ごとにステータスと結果を取得
+- **タスク照会（一覧）**
+  - 全タスクのステータスと結果を一覧で取得
+  - ページネーションでの検索に対応
+- **コールバック**
+  - タスク作成時にコールバック URL を指定可能
+  - タスクのステータス変化時に自動コールバックを送信

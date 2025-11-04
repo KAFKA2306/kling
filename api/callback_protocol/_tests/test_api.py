@@ -1,19 +1,18 @@
 """Tests for the callback protocol API endpoints."""
 import json
-from unittest.mock import AsyncMock, patch, MagicMock
+from unittest.mock import AsyncMock, MagicMock, patch
+
 import pytest
 from fastapi import status
 from fastapi.testclient import TestClient
 
-from ...client import router as client_router
-from ...config import KlingConfig
-from .. import router as callback_router
-from .._requests import CallbackRequest, TaskStatus, TaskInfo, TaskResult
-from .._responses import CallbackAckResponse
-from .._exceptions import CallbackValidationError, CallbackProcessingError
+import api.callback_protocol.callback_protocol as callback_router
+from api.callback_protocol._exceptions import CallbackProcessingError, CallbackValidationError
+from api.callback_protocol._requests import CallbackRequest, TaskInfo, TaskResult, TaskStatus
+from api.callback_protocol._responses import CallbackAckResponse
 
 # Test client setup
-client = TestClient(callback_router)
+client = TestClient(callback_router.router)
 
 # Fixtures
 @pytest.fixture

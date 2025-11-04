@@ -5,7 +5,7 @@ This module provides a client for interacting with the Kling AI Video Effects AP
 Example:
     ```python
     import httpx
-    from app.core.third_party_integrations.kling.api.video_effects import VideoEffectsAPI
+    from api.video_effects import VideoEffectsAPI
     
     async with httpx.AsyncClient() as client:
         api = VideoEffectsAPI(client, api_key="your-api-key")

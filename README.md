@@ -1,59 +1,52 @@
 # Kling AI Python SDK
 
-A modern, type-safe Python SDK for interacting with the Kling AI API. This SDK provides a clean, intuitive interface for all Kling AI services including video generation, image processing, and account management.
+Kling AI API と連携するための最新かつ型安全な Python SDK です。動画生成、画像処理、アカウント管理を含むすべての Kling AI サービスに、直感的でわかりやすいインターフェースを提供します。
 
-## ✨ Features
+## ✨ 特長
 
-- **Full API Coverage**: Support for all Kling AI endpoints
-- **Type Safety**: Built with Pydantic v2 for runtime type checking
-- **Async/Await**: Native async support with HTTPX
-- **Automatic Retries**: Configurable retry logic for transient failures
-- **Comprehensive Models**: Strongly-typed request/response models
-- **Developer Experience**: Detailed error messages and logging
+- **完全な API カバレッジ**: すべての Kling AI エンドポイントをサポート
+- **型安全性**: 実行時型チェックのために Pydantic v2 を採用
+- **Async/Await 対応**: HTTPX によるネイティブな非同期サポート
 
-## 🚀 Installation
+## 🚀 インストール
 
 ```bash
-# Using Poetry (recommended)
-poetry add kling-ai-sdk
-
-# Using pip
-pip install kling-ai-sdk
+uv sync install kling-ai-sdk
 ```
 
-## 📚 Quick Start
+## 📚 クイックスタート
 
-### Basic Usage
+### 基本的な使用例
 
 ```python
 from kling.client import KlingClient
 from kling.api.text_to_video import TextToVideoRequest
 
 async def main():
-    # Initialize client with your API key
+    # API キーでクライアントを初期化
     client = KlingClient(api_key="your-api-key")
-    
-    # Create a text-to-video request
+
+    # テキストから動画を生成するリクエストを作成
     request = TextToVideoRequest(
         prompt="A beautiful sunset over mountains",
         duration=5.0,
         resolution="1920x1080"
     )
-    
-    # Submit the request
+
+    # リクエストを送信
     response = await client.text_to_video(request)
     print(f"Video generation started with ID: {response.task_id}")
 
-# Run the async function
+# 非同期関数を実行
 import asyncio
 asyncio.run(main())
 ```
 
-## 📦 API Modules
+## 📦 API モジュール
 
-### Account Information
-- Query resource packages and usage
-- Check account limits and quotas
+### アカウント情報
+- リソースパッケージと利用状況の確認
+- アカウントの制限やクォータの確認
 
 ```python
 from kling.api.account_information_inquiry import get_account_costs
@@ -68,9 +61,9 @@ async def check_usage():
     return response
 ```
 
-### Callback Protocol
-- Handle asynchronous callbacks for long-running tasks
-- Process task updates and completions
+### コールバックプロトコル
+- 長時間タスクの非同期コールバック処理
+- タスク更新と完了のハンドリング
 
 ```python
 from kling.api.callback_protocol import CallbackRequest, register_callback_handler
@@ -83,32 +76,32 @@ def handle_callback(callback: CallbackRequest):
         print(f"Result URL: {callback.task_result.video_url}")
 ```
 
-### Media Generation
-- Text-to-Video generation
-- Image-to-Video conversion
-- Multi-Image Video creation
-- Video effects and enhancements
-- Virtual Try-On functionality
+### メディア生成
+- テキストから動画を生成
+- 画像から動画へ変換
+- 複数画像からの動画生成
+- 動画エフェクトと後処理
+- バーチャル試着機能
 
 ```python
-# Text to Video
+# テキストから動画
 from kling.api.text_to_video import TextToVideoRequest
 
-# Image to Video
+# 画像から動画
 from kling.api.image_to_video import ImageToVideoRequest
 
-# Video Effects
+# 動画エフェクト
 from kling.api.video_effects import apply_effect
 ```
 
-## 🔧 Configuration
+## 🔧 設定
 
-Configure the client with environment variables or directly:
+環境変数またはコード上でクライアントを設定できます。
 
 ```python
 from kling.client import KlingClient
 
-# Initialize with custom settings
+# カスタム設定で初期化
 client = KlingClient(
     api_key="your-api-key",
     base_url="https://api.kling.ai/v1",
@@ -117,43 +110,10 @@ client = KlingClient(
 )
 ```
 
-### Environment Variables
+### 環境変数
 
 ```bash
 export KLING_API_KEY="your-api-key"
 export KLING_BASE_URL="https://api.kling.ai/v1"
 export KLING_TIMEOUT=30
 ```
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read our [contributing guidelines](CONTRIBUTING.md) before submitting pull requests.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Error Handling
-
-The SDK raises `KlingAPIError` for API-related errors and `ValidationError` for request/response validation issues.
-
-```python
-try:
-    task = await video_api.create_task(request)
-except KlingAPIError as e:
-    print(f"API Error: {e}")
-except ValidationError as e:
-    print(f"Validation Error: {e}")
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a pull request
-
-## License
-
-MIT
