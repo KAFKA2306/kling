@@ -112,13 +112,6 @@ class KlingClient:
         """Async context manager exit - ensure client is closed."""
         await self.close()
 
-    @retry(
-        stop=stop_after_attempt(3),
-        wait=wait_exponential(multiplier=1, min=1, max=10),
-        retry=retry_if_exception_type(
-            (httpx.NetworkError, httpx.TimeoutException, httpx.HTTPStatusError)
-        ),
-    )
     async def _request(
         self,
         method: str,
@@ -129,30 +122,9 @@ class KlingClient:
         logger.debug("Making %s request to %s", method, url)
         kwargs.setdefault("headers", {}).update(self._get_headers())
 
-        try:
-            response = await self._client.request(method, url, **kwargs)
-            response.raise_for_status()
-            return response.json()
-
-        except httpx.HTTPStatusError as e:
-            error_msg = f"HTTP error {e.response.status_code}"
-            try:
-                error_data = e.response.json()
-                error_msg = error_data.get("message", error_msg)
-            except (json.JSONDecodeError, AttributeError):
-                error_msg = f"{error_msg}: {e.response.text}"
-
-            logger.error(
-                "%s: %s",
-                error_msg,
-                str(e),
-                extra={"status_code": e.response.status_code},
-            )
-            raise KlingSingletonAPIError(error_msg, status_code=e.response.status_code) from e
-
-        except httpx.RequestError as e:
-            logger.error("Request failed: %s", str(e))
-            raise KlingSingletonAPIError(f"Request failed: {str(e)}") from e
+        response = await self._client.request(method, url, **kwargs)
+        response.raise_for_status()
+        return response.json()
 
     async def get(
         self,
