@@ -6,4 +6,5 @@ __all__ = [
     "lip_sync",
     "multi_image_to_video",
     "video_extension",
+    "storyboard",
 ]
