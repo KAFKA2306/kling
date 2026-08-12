@@ -1,0 +1,36 @@
+name: Storyboard contract
+
+on:
+  pull_request:
+    paths:
+      - "models/storyboard.py"
+      - "usecases/storyboard.py"
+      - "models/__init__.py"
+      - "usecases/__init__.py"
+      - "usecases/text_to_video.py"
+      - "tests/test_storyboard_adapter.py"
+      - ".github/workflows/storyboard-contract.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install project and test dependencies
+        run: python -m pip install -e ".[dev]"
+      - name: Run Storyboard tests
+        run: python -m pytest tests/test_storyboard_adapter.py -q
+      - name: Lint Storyboard boundary
+        run: >-
+          ruff check
+          models/storyboard.py
+          usecases/storyboard.py
+          usecases/text_to_video.py
+          tests/test_storyboard_adapter.py
