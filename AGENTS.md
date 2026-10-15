@@ -44,3 +44,11 @@ Python 3.11 互換、4 スペースインデント、型ヒント必須が基本
 
 ## Security & Configuration Tips
 API キーやシークレットは `.env` に保存して動的に読み込み、`.gitignore` で除外状態を維持してください。`api/callback_protocol` を利用する場合は署名検証を必ず有効化し、テスト環境でもフェイルクローズ戦略を保ちます。タイムアウトやリトライ回数を変更する際は `config.py` のデフォルト値を根拠付きで見直し、PR 説明に設定差分を記録することで将来的なトラブルシューティングを容易にします。顧客データや生成結果の URL をログに出力する際はマスキングを行い、保存先の権限管理を徹底してください。
+
+## Outcome-first task interpretation (Altitude / Depth / Range / Speed)
+
+- **Altitude:** Interpret a task as a verifiable user outcome, not only the named intermediate step. Infer the smallest justified acceptance criteria from the request and current repository state; do not silently expand scope or override explicit instructions.
+- **Depth:** Use primary/current evidence and real domain tools and methods. Verify the actual postcondition independently of agent self-report, preferably on the exact changed revision or target runtime.
+- **Range:** Combine code, data, tests, runtime/UI, and domain expertise when that materially improves the outcome, while respecting canonical owners and avoiding duplicate systems.
+- **Speed:** Complete authorized read-only and reversible work through implementation, focused checks, and read-back without unnecessary approval loops. Bound retries and stop at the proven outcome.
+- These principles never bypass repository-specific security, privacy, permission, publication, spending, destructive-action, or release boundaries. State verified results and any remaining `UNVERIFIED` layers.
