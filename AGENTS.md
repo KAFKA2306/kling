@@ -19,19 +19,6 @@ uv sync install kling-ai-sdk
 ```
 開発時は `uv run python -m pytest` で全テストを走らせ、対象 API のみ検証する際は `pytest api/image_to_video/_tests -k create_task` のようにパスやキーワードで絞り込みます。実装中のファイルだけ動作確認したい場合は `uv run python -m pytest --maxfail=1 path/to/tests` を活用します。非同期コードの再現確認には `uv run python -m asyncio` を利用すると、イベントループと整合した実行が可能です。Markdown ドキュメントはローカルエディタでプレビューし、更新後は PR 説明に差分の意図を記載してください。
 
-## Model Recommendation
-2025年11月13日現在、Wan Q5 量子化版の推奨モデルは次の通りです。
-- リポジトリ名: `QuantStack/Wan2.2-Animate-14B-GGUF`
-- ファイル名: `Wan2.2-Animate-14B-Q5_K_M.gguf`
-- 約 13 GB で、16 GB VRAM 環境で安定稼働
-- 2025年9月リリースの最新 Animate 版で品質と VRAM 効率のバランスが最良
-ダウンロードは Hugging Face の Web UI か、以下の CLI で取得します。
-```
-pip install "huggingface_hub[cli]"
-huggingface-cli download QuantStack/Wan2.2-Animate-14B-GGUF Wan2.2-Animate-14B-Q5_K_M.gguf
-```
-依存コンポーネントや推論スクリプトでは必ずこのモデルを指すように設定し、他の Wan バリアントは利用しないでください。
-
 ## Coding Style & Naming Conventions
 コメント禁止。エラーハンドリング禁止。例外禁止。th二重実装禁止。ハードコーディング禁止。DRYの原則必須。二重実装禁止。常に最小コードで機能を実現するようにスリム化する。
 Python 3.11 互換、4 スペースインデント、型ヒント必須が基本方針です。Pydantic モデルには `Field(..., description=...)` を付与し、公開 API は `__all__` で明示的に制御してください。例外クラスは `<Feature>Error` の命名、HTTP クライアントは `<Feature>API` のクラス名で統一します。Docstring は一行サマリ＋詳細記述形式を採用し、Markdown でのコード例と整合するように保守します。ロガーは `logging.getLogger(__name__)` を使用し、通信層ではシリアライズ前後で機密情報を記録しないよう注意してください。
